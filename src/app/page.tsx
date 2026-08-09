@@ -1,69 +1,523 @@
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { 
+  ArrowRight, 
+  Bot, 
+  Brain, 
+  Check, 
+  ChevronDown, 
+  FileText, 
+  Search, 
+  Zap, 
+  ShieldCheck, 
+  Mail, 
+  Star
+} from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="flex flex-col min-h-screen">
+      {/* Navigation */}
+      <header className="sticky top-0 z-50 w-full border-b border-white/5 glass-panel">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded bg-[#00E5FF] flex items-center justify-center">
+              <Bot className="w-5 h-5 text-[#020617]" />
+            </div>
+            <span className="font-bold text-xl tracking-tight">Scope<span className="text-[#00E5FF]">AI</span></span>
+          </div>
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+            <a href="#how-it-works" className="hover:text-white transition-colors">How it Works</a>
+            <Link href="/demo" className="hover:text-white transition-colors">Live Demo</Link>
+            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          </nav>
+          <div className="flex items-center gap-4">
+            <Link href="/demo" className="text-sm font-medium hover:text-[#00E5FF] transition-colors hidden md:block">Log in</Link>
+            <Link href="/order" className="bg-[#00E5FF] text-[#020617] px-4 py-2 rounded-md text-sm font-bold hover:bg-[#00E5FF]/90 transition-colors">
+              Get Started
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      <main className="flex-1 relative">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] opacity-20 bg-[#00E5FF] blur-[120px] rounded-full mix-blend-screen" />
+          <div className="absolute top-1/4 right-0 w-[600px] h-[600px] opacity-20 bg-[#7C3AED] blur-[150px] rounded-full mix-blend-screen" />
+          <div className="absolute inset-0 bg-grid opacity-20" />
         </div>
+
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 px-4">
+          <div className="container mx-auto text-center max-w-4xl relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/10 text-[#00E5FF] text-sm font-medium mb-8"
+            >
+              <Zap className="w-4 h-4" />
+              <span>ScopeAI is now available</span>
+            </motion.div>
+            
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 leading-tight"
+            >
+              Your Competitors Have Secrets. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#7C3AED]">Our AI Agents Find Them.</span>
+            </motion.h1>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto"
+            >
+              Professional competitive intelligence reports delivered in 24 hours — entirely by autonomous AI agents. No humans in the loop.
+            </motion.p>
+            
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            >
+              <Link href="/order?tier=starter" className="w-full sm:w-auto bg-[#00E5FF] text-[#020617] px-8 py-4 rounded-lg text-lg font-bold hover:bg-[#00E5FF]/90 transition-colors shadow-[0_0_20px_rgba(0,229,255,0.4)] flex items-center justify-center gap-2">
+                Get Your Report — $49 <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link href="#how-it-works" className="w-full sm:w-auto bg-white/5 border border-white/10 hover:bg-white/10 text-white px-8 py-4 rounded-lg text-lg font-medium transition-colors flex items-center justify-center gap-2">
+                See How It Works
+              </Link>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-sm text-slate-500 font-medium"
+            >
+              <div className="flex items-center gap-2">
+                <Brain className="w-5 h-5 text-[#7C3AED]" /> Powered by Gemini 3.6 Flash
+              </div>
+              <div className="flex items-center gap-2">
+                <Bot className="w-5 h-5 text-[#00E5FF]" /> 100% AI-Native
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-5 h-5 text-yellow-400" /> 24h Delivery
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section id="how-it-works" className="py-24 relative bg-black/40">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">How ScopeAI Works</h2>
+              <p className="text-slate-400 text-lg">From brief to professional report in 3 simple steps.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto relative">
+              {/* Connecting line for desktop */}
+              <div className="hidden md:block absolute top-12 left-1/6 right-1/6 h-[2px] bg-gradient-to-r from-transparent via-[#00E5FF]/30 to-transparent -z-10" />
+
+              {[
+                {
+                  icon: Search,
+                  title: "1. Describe Your Business",
+                  desc: "Tell us about your business and competitors in plain language. Our AI understands any industry.",
+                  color: "text-[#00E5FF]"
+                },
+                {
+                  icon: Brain,
+                  title: "2. AI Agents Investigate",
+                  desc: "3 specialized Gemini agents research, analyze, and write your report autonomously. Every action is logged.",
+                  color: "text-[#7C3AED]"
+                },
+                {
+                  icon: FileText,
+                  title: "3. Receive Your Report",
+                  desc: "A professional competitive intelligence report delivered to your inbox within 24 hours.",
+                  color: "text-[#00E5FF]"
+                }
+              ].map((step, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.2 }}
+                  className="glass-card p-8 rounded-2xl relative flex flex-col items-center text-center"
+                >
+                  <div className={`w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 shadow-lg ${step.color}`}>
+                    <step.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-slate-400 leading-relaxed">{step.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Live Agent Dashboard Preview */}
+        <section id="demo" className="py-24 px-4 overflow-hidden">
+          <div className="container mx-auto max-w-6xl">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <motion.div 
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-3xl md:text-5xl font-bold mb-6">Watch Them Work in Real-Time</h2>
+                <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+                  Our system doesn't just return a static document. You get a live terminal view of our Gemini 3.6 agents as they scour the web, analyze data, and build your report from the ground up.
+                </p>
+                <ul className="space-y-4 mb-8">
+                  {[
+                    "Multi-agent collaboration (Investigator, Analyst, Writer)",
+                    "Deep web scraping & sentiment analysis",
+                    "Strategic gap identification",
+                    "Automated positioning maps"
+                  ].map((feature, i) => (
+                    <li key={i} className="flex items-center gap-3 text-slate-300">
+                      <div className="w-6 h-6 rounded-full bg-[#00E5FF]/20 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-[#00E5FF]" />
+                      </div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative"
+              >
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#00E5FF] to-[#7C3AED] rounded-xl blur opacity-30 animate-pulse-glow" />
+                <div className="relative rounded-xl overflow-hidden glass-card border border-slate-700 font-mono text-sm shadow-2xl">
+                  {/* Terminal Header */}
+                  <div className="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                    <span className="ml-4 text-slate-500 text-xs">agent-orchestrator.log</span>
+                  </div>
+                  {/* Terminal Body */}
+                  <div className="p-6 bg-[#0a0f1e] h-[400px] overflow-hidden relative flex flex-col gap-2 text-slate-300">
+                    <TerminalLine delay={0} color="text-cyan-400" tag="SYSTEM" text="Initializing ScopeAI Agency Swarm..." />
+                    <TerminalLine delay={1} color="text-cyan-400" tag="SYSTEM" text="Deploying Gemini 3.6 Flash models (n=3)..." />
+                    <TerminalLine delay={2} color="text-purple-400" tag="INVESTIGATOR" text="Scanning competitor pricing pages [Acme Corp, Globex]..." />
+                    <TerminalLine delay={3.5} color="text-purple-400" tag="INVESTIGATOR" text="Analyzing 47 customer reviews on G2 for Acme Corp..." />
+                    <TerminalLine delay={5} color="text-green-400" tag="ANALYST" text="Cross-referencing market positioning data..." />
+                    <TerminalLine delay={6.5} color="text-green-400" tag="ANALYST" text="Identified 3 strategic gaps in competitor offering." />
+                    <TerminalLine delay={8} color="text-yellow-400" tag="WRITER" text="Generating executive summary..." />
+                    <TerminalLine delay={9} color="text-yellow-400" tag="WRITER" text="Formatting final 25-page PDF report..." />
+                    <TerminalLine delay={10} color="text-cyan-400" tag="SYSTEM" text="Task complete. Sending email notification to user." />
+                    
+                    {/* Blinking Cursor */}
+                    <div className="mt-2 w-2 h-4 bg-[#00E5FF] animate-pulse" />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+            
+            <div className="mt-8 text-center">
+              <Link href="/demo" className="inline-flex items-center gap-2 bg-[#00E5FF]/10 text-[#00E5FF] border border-[#00E5FF]/30 px-6 py-3 rounded-lg font-medium hover:bg-[#00E5FF]/20 transition-colors">
+                Run a Real AI Pipeline Test <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="py-24 relative">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-5xl font-bold mb-4">Transparent Pricing</h2>
+              <p className="text-slate-400 text-lg">One-time payment. No subscriptions. Instant ROI.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 items-center">
+              {/* Starter */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="glass-panel p-8 rounded-2xl border border-white/5"
+              >
+                <h3 className="text-xl font-medium text-slate-300 mb-2">Starter</h3>
+                <div className="text-4xl font-bold mb-6">$49</div>
+                <p className="text-slate-400 mb-8 text-sm">Perfect for quick validation of a single competitor.</p>
+                <ul className="space-y-4 mb-8">
+                  <PricingFeature text="Single competitor analysis" />
+                  <PricingFeature text="10-page report" />
+                  <PricingFeature text="48h delivery" />
+                  <PricingFeature text="Standard data sources" />
+                </ul>
+                <Link href="/order?tier=starter" className="w-full py-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors font-medium text-center">
+                  Select Starter
+                </Link>
+              </motion.div>
+
+              {/* Professional */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="glass-panel p-8 rounded-2xl border border-[#00E5FF]/50 relative shadow-[0_0_30px_rgba(0,229,255,0.15)] transform md:-translate-y-4"
+              >
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#00E5FF] text-[#020617] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  Most Popular
+                </div>
+                <h3 className="text-xl font-medium text-[#00E5FF] mb-2">Professional</h3>
+                <div className="text-5xl font-bold mb-6 text-white">$99</div>
+                <p className="text-slate-400 mb-8 text-sm">Comprehensive view of your market landscape.</p>
+                <ul className="space-y-4 mb-8">
+                  <PricingFeature text="Up to 3 competitors analysis" />
+                  <PricingFeature text="25-page deep-dive report" />
+                  <PricingFeature text="24h priority delivery" />
+                  <PricingFeature text="Market positioning map" />
+                  <PricingFeature text="Sentiment analysis on reviews" />
+                </ul>
+                <Link href="/order?tier=professional" className="w-full py-3 rounded-lg bg-[#00E5FF] text-[#020617] hover:bg-[#00E5FF]/90 shadow-[0_0_15px_rgba(0,229,255,0.4)] transition-colors font-bold text-center">
+                  Get Professional Report
+                </Link>
+              </motion.div>
+
+              {/* Enterprise */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="glass-panel p-8 rounded-2xl border border-white/5"
+              >
+                <h3 className="text-xl font-medium text-slate-300 mb-2">Enterprise</h3>
+                <div className="text-4xl font-bold mb-6">$149</div>
+                <p className="text-slate-400 mb-8 text-sm">Ongoing intelligence for dominating your niche.</p>
+                <ul className="space-y-4 mb-8">
+                  <PricingFeature text="5+ competitors deep-dive" />
+                  <PricingFeature text="40-page comprehensive report" />
+                  <PricingFeature text="24h highest priority" />
+                  <PricingFeature text="Quarterly monitoring alerts" />
+                  <PricingFeature text="Raw data export (CSV)" />
+                </ul>
+                <Link href="/order?tier=enterprise" className="w-full py-3 rounded-lg border border-white/10 hover:bg-white/5 transition-colors font-medium text-center">
+                  Select Enterprise
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-24 bg-black/30">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">Trusted by Builders</h2>
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[
+                {
+                  quote: "ScopeAI saved us weeks of research. The agents identified a pricing gap in our top two competitors that we exploited the very next week.",
+                  author: "Sarah J.",
+                  role: "SaaS Founder"
+                },
+                {
+                  quote: "I was skeptical about AI agents doing this, but the depth of the 25-page report blew my mind. It read like a top-tier consulting firm wrote it.",
+                  author: "Michael T.",
+                  role: "E-commerce Director"
+                },
+                {
+                  quote: "The live terminal is so cool to watch, but the actual PDF report is the real value. Incredible ROI for $99. We use it quarterly now.",
+                  author: "Elena R.",
+                  role: "Marketing Head"
+                }
+              ].map((t, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="glass-card p-8 rounded-2xl"
+                >
+                  <div className="flex gap-1 mb-4 text-[#00E5FF]">
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                    <Star className="w-4 h-4 fill-current" />
+                  </div>
+                  <p className="text-slate-300 mb-6 italic leading-relaxed">"{t.quote}"</p>
+                  <div>
+                    <div className="font-bold text-white">{t.author}</div>
+                    <div className="text-sm text-slate-500">{t.role}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section id="faq" className="py-24">
+          <div className="container mx-auto px-4 max-w-3xl">
+            <h2 className="text-3xl md:text-5xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              <FaqItem 
+                q="How are the reports generated?" 
+                a="We use a swarm of specialized AI agents powered by Gemini 3.6 Flash. They autonomously search the web, analyze pricing, read customer reviews, and synthesize the data into a professional PDF report. No humans are involved." 
+              />
+              <FaqItem 
+                q="Is my data kept confidential?" 
+                a="Absolutely. We do not use your business information to train our models, and all reports are strictly confidential. We employ industry-standard encryption for all data at rest and in transit." 
+              />
+              <FaqItem 
+                q="What if I'm not satisfied with the report?" 
+                a="We offer a 100% money-back guarantee. If the report doesn't provide actionable insights for your business, simply email us within 7 days and we'll refund your payment." 
+              />
+              <FaqItem 
+                q="Can I monitor competitors on an ongoing basis?" 
+                a="Yes, our Enterprise tier includes quarterly monitoring. Our agents will re-evaluate your competitors every 3 months and alert you to significant changes in their strategy or pricing." 
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Banner */}
+        <section className="py-24 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00E5FF]/10 to-[#7C3AED]/10" />
+          <div className="container mx-auto px-4 relative">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="glass-card max-w-4xl mx-auto rounded-3xl p-12 text-center border-[#00E5FF]/20"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Stop guessing. Start knowing.</h2>
+              <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
+                Join hundreds of businesses using AI agents to uncover their competitors' weaknesses.
+              </p>
+              
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert('Thank you! We will notify you when ScopeAI launches.');
+                  setEmail('');
+                }}
+                className="flex flex-col sm:flex-row max-w-md mx-auto gap-3"
+              >
+                <div className="relative flex-1">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                  <input 
+                    type="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email" 
+                    className="w-full bg-slate-900/50 border border-slate-700 rounded-lg py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#00E5FF] transition-colors"
+                    required
+                  />
+                </div>
+                <button type="submit" className="bg-[#00E5FF] text-[#020617] px-6 py-3 rounded-lg font-bold hover:bg-[#00E5FF]/90 transition-colors whitespace-nowrap shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                  Get Started
+                </button>
+              </form>
+            </motion.div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="border-t border-white/5 bg-[#030712] py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-2">
+              <Bot className="w-6 h-6 text-[#00E5FF]" />
+              <span className="font-bold text-xl tracking-tight">Scope<span className="text-[#00E5FF]">AI</span></span>
+            </div>
+            
+            <div className="flex gap-6 text-sm text-slate-400">
+              <a href="#" className="hover:text-white transition-colors">Terms</a>
+              <a href="#" className="hover:text-white transition-colors">Privacy</a>
+              <a href="#" className="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <div className="flex flex-col items-end text-sm text-slate-500 gap-1">
+              <div className="flex items-center gap-1">
+                Powered by <Brain className="w-4 h-4 text-[#7C3AED]" /> Gemini
+              </div>
+              <div>Built for Build with Gemini XPRIZE</div>
+            </div>
+          </div>
+          <div className="mt-8 text-center text-xs text-slate-600">
+            &copy; {new Date().getFullYear()} ScopeAI. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// Helper Components
+
+function PricingFeature({ text }: { text: string }) {
+  return (
+    <li className="flex items-start gap-3">
+      <Check className="w-5 h-5 text-[#00E5FF] shrink-0 mt-0.5" />
+      <span className="text-slate-300 text-sm">{text}</span>
+    </li>
+  );
+}
+
+function FaqItem({ q, a }: { q: string, a: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="border border-white/10 rounded-xl overflow-hidden glass-card transition-all">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left px-6 py-4 flex items-center justify-between font-medium text-lg focus:outline-none hover:bg-white/5"
+      >
+        <span>{q}</span>
+        <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="px-6 pb-4 text-slate-400 leading-relaxed border-t border-white/5 pt-4">
+          {a}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TerminalLine({ delay, color, tag, text }: { delay: number, color: string, tag: string, text: string }) {
+  const [visible, setVisible] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), delay * 1000);
+    return () => clearTimeout(timer);
+  }, [delay]);
+  
+  if (!visible) return null;
+  
+  return (
+    <div className="flex gap-3 overflow-hidden">
+      <span className="text-slate-500 shrink-0">[{new Date().toLocaleTimeString([], {hour12: false})}]</span>
+      <span className={`${color} shrink-0`}>[{tag}]</span>
+      <span className="text-slate-300 animate-[typewriter_0.5s_steps(40,end)] whitespace-nowrap overflow-hidden inline-block max-w-full truncate">{text}</span>
     </div>
   );
 }

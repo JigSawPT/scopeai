@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+*.md
+.env*
+.gitignore
+docker-compose.yml
+xprize_*.md
+xprize_*.csv
+AGENTS.md
+CLAUDE.md

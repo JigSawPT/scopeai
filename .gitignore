@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# credentials & data
+gcp-key.json
+application_default_credentials.json
+data/db.json
+
