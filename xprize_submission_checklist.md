@@ -45,4 +45,4 @@
 2. **Lint:** `npm run lint` → PASS (clean, 2026-08-10)
 3. **Container build:** Cloud Build → PASS (2m39s, 2026-08-10)
 4. **Production E2E:** PASS — grounded report with real citations on the live Cloud Run URL (2026-08-10)
-5. **Stripe live transaction:** IN PROGRESS — live mode active since 2026-08-10; requires real customer orders
+5. **Stripe live transaction:** VERIFIED — full live cycle tested 2026-08-10: real $49 payment (`cs_live_...`/`pi_3U2pcR...`) → signed webhook → agent pipeline → report with 40 real web sources → refund issued (validation order, not customer revenue). Real customer orders pending
