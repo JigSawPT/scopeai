@@ -15,7 +15,7 @@
 | # | Requirement | Status | Evidence / Notes |
 |---|---|---|---|
 | 1 | Code Repository shared with judges | PARTIAL | Public repo live: https://github.com/JigSawPT/scopeai — owner must share with `testing@devpost.com` & `judging@hacker.fund` at submission |
-| 2 | 3-Minute Video | RENDERED — UPLOAD PENDING | `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-10_12-03-10.mp4` (2m28s, 1080p, real production footage + narration). Owner must upload to YouTube/Vimeo (public) and paste link here |
+| 2 | 3-Minute Video | COMPLETE | Self-hosted: https://scopeai-video-746706977308.us-central1.run.app (2m28s, 1080p, real production footage + narration). Source MP4: `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-10_12-03-10.mp4`. If YouTube/Vimeo is required, owner uploads the MP4 (one click) |
 | 3 | Written Narrative | COMPLETE | `xprize_narrative.md` — 500-1000 words, all figures measured from live system 2026-08-10 |
 | 4 | Financial Evidence | PARTIAL | `xprize_pnl_template.csv` with real Stripe data (refunded verification order + real fee). Append real customer orders as they occur; attach Stripe Payments export at submission |
 | 5 | Google Cloud Bills | PENDING | Owner to export invoice PDF from Cloud Console Billing (one click); amount then filled in P&L |
@@ -47,7 +47,7 @@
 
 ## Owner action list (only a human can do these)
 
-1. Upload the rendered video to YouTube/Vimeo (public, unlisted NOT allowed) and record the link.
+1. Upload the rendered video to YouTube/Vimeo (public, unlisted NOT allowed) and record the link. File: `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-10_12-03-10.mp4`. Video is already publicly accessible at https://scopeai-video-746706977308.us-central1.run.app (self-hosted, no login required).
 2. Export the GCP invoice PDF (Cloud Console → Billing → Documents).
 3. Send outreach (templates in `customer_outreach.md`) and collect 5-10 real orders.
 4. Share the GitHub repo with `testing@devpost.com` & `judging@hacker.fund`; submit on Devpost before Aug 17 13:00 PDT.

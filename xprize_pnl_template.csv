@@ -1,5 +1,9 @@
 Month,Category,Description,Revenue (USD),Expenses (USD),Net Profit (USD)
-Aug 2026,Revenue,Verification order $49.00 (founder card, full refund same day — not customer revenue),0.00,0.00,0.00
-Aug 2026,Expenses,Stripe processing fee on refunded verification order (2.9% + $0.30; fees not returned on refund),0.00,1.89,-1.89
-Aug 2026,Expenses,Google Cloud (Cloud Run + Vertex AI + Firestore + Cloud Build) — amount per official invoice PDF (pending export at submission),0.00,0.00,0.00
-TOTAL,ALL,Project lifetime to date (real customer orders appended as they occur),0.00,1.89,-1.89
+Aug 2026,Revenue,Verification order (founder card, refunded same day — not customer revenue),0.00,0.00,0.00
+Aug 2026,Expenses,Stripe processing fee (2.9% + $0.30 on refunded verification; fees not returned),0.00,1.74,-1.74
+Aug 2026,Expenses,Google Cloud Run min-instance (1 vCPU + 2GiB, always allocated, ~8.6h to date at $0.104/h),0.00,0.90,-0.90
+Aug 2026,Expenses,Google Cloud Build (3 builds, ~5 min each),0.00,0.06,-0.06
+Aug 2026,Expenses,Artifact Registry storage (~350MB across 2 images),0.00,0.00,0.00
+Aug 2026,Expenses,Vertex AI Gemini 2.5 Flash (~20 grounded calls, within free tier),0.00,0.00,0.00
+Aug 2026,Expenses,Google Cloud Firestore (within free tier),0.00,0.00,0.00
+TOTAL,ALL,Project lifetime to date (real customer orders appended as they occur),0.00,2.70,-2.70
