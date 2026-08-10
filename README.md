@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ScopeAI — Autonomous Competitive Intelligence Agency
 
-## Getting Started
+ScopeAI sells professional competitive intelligence reports ($49–$149) produced
+entirely by a coordinated team of AI agents — no humans in the operational loop.
+Payment, research, analysis, writing, and delivery all run autonomously.
 
-First, run the development server:
+Built for the **Build with Gemini XPRIZE** (Small Business Services category).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**Production:** https://scopeai-746706977308.us-central1.run.app
+
+## Architecture
+
+```
+Customer order (/order)
+  → Stripe Checkout (or judge sandbox mode)
+  → webhook: checkout.session.completed
+  → Orchestrator
+      → INVESTIGATOR agent — Gemini 2.5 Flash + Google Search grounding
+        (live web research: pricing, features, review sentiment)
+      → ANALYST agent — Gemini 2.5 Flash + Google Search grounding
+        (SWOT alignment, strategic gaps, market positioning)
+      → WRITER agent — Gemini 2.5 Flash
+        (executive Markdown report with citations)
+  → Firestore persistence (orders, reports, telemetry logs)
+  → Live telemetry dashboard (/report/[id]) with 3s polling
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Model:** `gemini-2.5-flash` on **Vertex AI** (`us-central1`), with structured
+  JSON output (`responseSchema`) and Google Search grounding for real citations.
+- **Hosting:** Google Cloud Run (containerized Next.js, standalone output).
+- **Persistence:** Google Cloud Firestore.
+- **Payments:** Stripe Checkout + signed webhooks. Without Stripe keys the app
+  runs in a clearly-labelled sandbox evaluation mode (no money moves).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Repository layout
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/
+│   ├── page.tsx               Landing page
+│   ├── demo/page.tsx          Judge sandbox: 3 preset scenarios
+│   ├── order/page.tsx         Order form + tier selection
+│   ├── report/[id]/page.tsx   Live telemetry + final report
+│   └── api/
+│       ├── analyze/route.ts   Direct pipeline endpoint (demo)
+│       ├── checkout/route.ts  Stripe Checkout session creation
+│       ├── webhook/route.ts   Stripe webhook (signature-verified)
+│       └── logs/route.ts      Telemetry polling endpoint
+└── lib/
+    ├── gemini.ts              Vertex AI / AI Studio client + retry + grounding
+    ├── agents/                INVESTIGATOR / ANALYST / WRITER / orchestrator
+    ├── db.ts                  Firestore persistence layer
+    ├── store.ts               In-memory cache over Firestore
+    └── stripe.ts              Stripe client + tier pricing
+```
 
-## Learn More
+## Local development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+cp .env.example .env   # fill in values
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Vertex AI auth locally: `gcloud auth application-default login`
+(or drop a service-account `gcp-key.json` in the project root).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Validation commands
 
-## Deploy on Vercel
+```bash
+npx tsc --noEmit   # 0 errors
+npm run lint       # clean
+npm run build      # standalone output
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment (Google Cloud)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+gcloud services enable aiplatform.googleapis.com firestore.googleapis.com \
+  cloudbuild.googleapis.com run.googleapis.com artifactregistry.googleapis.com
+gcloud firestore databases create --location=us-central1 --type=firestore-native
+gcloud artifacts repositories create scopeai --repository-format=docker --location=us-central1
+gcloud builds submit --region=us-central1 \
+  --tag us-central1-docker.pkg.dev/PROJECT_ID/scopeai/scopeai:latest .
+gcloud run deploy scopeai \
+  --image us-central1-docker.pkg.dev/PROJECT_ID/scopeai/scopeai:latest \
+  --region us-central1 --allow-unauthenticated --memory 2Gi --timeout 300 \
+  --update-env-vars "GEMINI_PROVIDER=vertex" \
+  --update-env-vars "GCP_PROJECT_ID=PROJECT_ID" \
+  --update-env-vars "GCP_LOCATION=us-central1" \
+  --update-env-vars "GEMINI_MODEL=gemini-2.5-flash"
+```
+
+Then register the Stripe webhook endpoint at
+`https://<run-url>/api/webhook` for `checkout.session.completed` and set
+`STRIPE_WEBHOOK_SECRET`.
+
+## Integrity note
+
+On 2026-08-10 this project went through a full audit. Fabricated artifacts from
+an earlier session (fake P&L rows, invented testimonials, a model name that did
+not exist) were removed or replaced with truthful equivalents. See
+`xprize_submission_checklist.md` for the current evidence-backed status.
