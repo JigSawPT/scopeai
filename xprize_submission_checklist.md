@@ -33,7 +33,7 @@
 - [x] **Google Cloud Usage:** Live on Cloud Run — https://scopeai-746706977308.us-central1.run.app (image built via Cloud Build, Artifact Registry `us-central1`)
 - [x] **Gemini API Usage:** `gemini-2.5-flash` on Vertex AI (`us-central1`) with Google Search grounding + `responseSchema` structured output; verified E2E in production 2026-08-10
 - [x] **AI-Native Operations:** 3-agent pipeline (`INVESTIGATOR`, `ANALYST`, `WRITER`) with timestamped telemetry per order
-- [x] **Monetization Engine:** Stripe configured in **test mode** (2026-08-10): Checkout session creation, signature-verified webhook (`we_1U2p7j9razTe4sSbvcZna79Q`), and pipeline trigger all verified E2E on production. **Live mode pending** — Stripe account business details not yet submitted (`charges_enabled: false`); live keys required for real revenue evidence
+- [x] **Monetization Engine:** Stripe **LIVE** (2026-08-10): account `charges_enabled: true`, live keys deployed to Cloud Run, live webhook `we_1U2pZn4Vy7Qkl3zVcEnd0DHv` enabled, live checkout session creation verified (`cs_live_...`). First real customer order pending
 - [x] **Judge Sandbox Mode:** `/demo` runs the real pipeline on 3 preset scenarios
 - [x] **Persistence:** Firestore (`(default)`, us-central1) stores orders, reports, logs; survives Cloud Run restarts
 
@@ -45,4 +45,4 @@
 2. **Lint:** `npm run lint` → PASS (clean, 2026-08-10)
 3. **Container build:** Cloud Build → PASS (2m39s, 2026-08-10)
 4. **Production E2E:** PASS — grounded report with real citations on the live Cloud Run URL (2026-08-10)
-5. **Stripe live transaction:** PENDING — test-mode flow fully verified 2026-08-10; requires live keys (business details submission) + real customer order
+5. **Stripe live transaction:** IN PROGRESS — live mode active since 2026-08-10; requires real customer orders
