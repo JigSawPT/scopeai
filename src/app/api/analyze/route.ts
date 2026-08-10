@@ -24,9 +24,12 @@ export async function POST(request: Request) {
 
     await saveOrder(order);
 
-    const report = await runAgentPipeline(order);
+    // Run the pipeline in the background so the client can watch live telemetry
+    runAgentPipeline(order).catch((err) => {
+      console.error(`Pipeline error for order ${order.id}:`, err);
+    });
 
-    return NextResponse.json(report);
+    return NextResponse.json({ order_id: order.id });
   } catch (error: unknown) {
     console.error('API Error:', error);
     return NextResponse.json({ error: getErrorMessage(error) }, { status: 500 });

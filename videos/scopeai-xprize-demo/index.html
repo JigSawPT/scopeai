@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>ScopeAI — XPRIZE Demonstration</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+    <style>
+      body { margin: 0; background: #020617; color: #fff; font-family: Inter, system-ui, sans-serif; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #020617; }
+      .clip { position: absolute; inset: 0; }
+      video.clip { object-fit: cover; width: 1920px; height: 1080px; }
+
+      .card { display: grid; place-items: center; background: #020617; }
+      .card-inner { position: relative; width: 1400px; text-align: center; }
+      .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.35em; color: #00E5FF; text-transform: uppercase; margin-bottom: 42px; }
+      .h1 { font-family: "Montserrat", sans-serif; font-size: 96px; font-weight: 700; line-height: 1.08; margin: 0 0 18px; }
+      .h1-grad { background: linear-gradient(90deg, #00E5FF, #7C3AED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .sub { font-size: 30px; color: #94a3b8; line-height: 1.5; margin-top: 34px; }
+      .accent-bar { width: 220px; height: 6px; margin: 44px auto 0; background: linear-gradient(90deg, #00E5FF, #7C3AED); border-radius: 3px; }
+
+      .lower { position: absolute; left: 90px; bottom: 90px; inset: auto; display: flex; align-items: center; gap: 22px; background: rgba(2, 6, 23, 0.82); border: 1px solid rgba(0, 229, 255, 0.35); border-left: 6px solid #00E5FF; border-radius: 10px; padding: 22px 34px; backdrop-filter: blur(6px); opacity: 0; }
+      .lower .tag { font-family: "JetBrains Mono", monospace; font-size: 26px; font-weight: 600; color: #00E5FF; letter-spacing: 0.12em; }
+      .lower .desc { font-size: 26px; color: #e2e8f0; }
+
+      .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; margin-top: 56px; text-align: left; }
+      .stat { border: 1px solid rgba(255,255,255,0.08); background: rgba(15, 23, 42, 0.6); border-radius: 16px; padding: 34px 40px; }
+      .stat .num { font-family: "Montserrat", sans-serif; font-size: 64px; font-weight: 700; color: #00E5FF; }
+      .stat .num.violet { color: #a78bfa; }
+      .stat .lbl { font-size: 24px; color: #94a3b8; margin-top: 8px; line-height: 1.4; }
+      .proof-foot { margin-top: 48px; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.08em; color: #94a3b8; }
+
+      .logo-row { display: flex; align-items: center; justify-content: center; gap: 22px; margin-bottom: 40px; }
+      .logo-box { width: 84px; height: 84px; border-radius: 14px; background: #00E5FF; display: grid; place-items: center; font-size: 48px; color: #020617; font-weight: 700; }
+      .logo-name { font-family: "Montserrat", sans-serif; font-size: 72px; font-weight: 700; }
+      .logo-name span { color: #00E5FF; }
+      .credit { margin-top: 40px; font-family: "JetBrains Mono", monospace; font-size: 22px; letter-spacing: 0.14em; color: #64748b; text-transform: uppercase; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="148">
+
+      <!-- Footage (track 0) -->
+      <video id="vid-landing" class="clip" src="assets/seg_landing.mp4" data-start="12.3" data-duration="8" data-track-index="0" muted playsinline></video>
+      <video id="vid-demo" class="clip" src="assets/seg_demo.mp4" data-start="20.3" data-duration="9" data-track-index="0" muted playsinline></video>
+      <video id="vid-telemetry" class="clip" src="assets/seg_telemetry.mp4" data-start="29.3" data-duration="65.1" data-track-index="0" muted playsinline></video>
+      <video id="vid-report" class="clip" src="assets/seg_report.mp4" data-start="94.4" data-duration="12.1" data-track-index="0" muted playsinline></video>
+      <video id="vid-order" class="clip" src="assets/seg_order.mp4" data-start="106.5" data-duration="10" data-track-index="0" muted playsinline></video>
+      <video id="vid-stripe" class="clip" src="assets/seg_stripe.mp4" data-start="116.5" data-duration="11.4" data-track-index="0" muted playsinline></video>
+
+      <!-- Intro card (track 1) -->
+      <section id="intro" class="clip card" data-start="0" data-duration="12.3" data-track-index="1">
+        <div class="card-inner">
+          <div id="intro-eyebrow" class="eyebrow">Build with Gemini XPRIZE</div>
+          <h1 id="intro-h1" class="h1">Your Competitors Have Secrets.</h1>
+          <h1 id="intro-h2" class="h1 h1-grad">Our AI Agents Find Them.</h1>
+          <p id="intro-sub" class="sub">The first competitive intelligence agency operated 100% by autonomous AI agents.</p>
+          <div id="intro-bar" class="accent-bar"></div>
+        </div>
+      </section>
+
+      <!-- Proof card (track 1) -->
+      <section id="proof" class="clip card" data-start="127.9" data-duration="13" data-track-index="1">
+        <div class="card-inner" style="width: 1500px;">
+          <div id="proof-eyebrow" class="eyebrow">Measured in production</div>
+          <div class="proof-grid">
+            <div id="stat-1" class="stat"><div class="num">~3 min</div><div class="lbl">from paid order to delivered report</div></div>
+            <div id="stat-2" class="stat"><div class="num violet">40+</div><div class="lbl">live web sources cited per report</div></div>
+            <div id="stat-3" class="stat"><div class="num">$49&ndash;$149</div><div class="lbl">per autonomous intelligence brief</div></div>
+            <div id="stat-4" class="stat"><div class="num violet">0</div><div class="lbl">humans in the operational loop</div></div>
+          </div>
+          <div id="proof-foot" class="proof-foot">Gemini 2.5 Flash &middot; Vertex AI &middot; Cloud Run &middot; Firestore &middot; Stripe</div>
+        </div>
+      </section>
+
+      <!-- Outro card (track 1) -->
+      <section id="outro" class="clip card" data-start="140.9" data-duration="7.1" data-track-index="1">
+        <div class="card-inner">
+          <div id="outro-logo" class="logo-row">
+            <div class="logo-box">&#9673;</div>
+            <div class="logo-name">Scope<span>AI</span></div>
+          </div>
+          <h1 id="outro-tag" class="h1" style="font-size: 64px;">Stop guessing. Start knowing.</h1>
+          <div id="outro-credit" class="credit">Powered by Gemini 2.5 Flash on Vertex AI</div>
+        </div>
+      </section>
+
+      <!-- Lower thirds (track 2) -->
+      <div id="lt-inv" class="clip lower" data-start="34.5" data-duration="14.2" data-track-index="2">
+        <span class="tag">INVESTIGATOR</span><span class="desc">Live web research &mdash; pricing, features, review sentiment</span>
+      </div>
+      <div id="lt-ana" class="clip lower" data-start="49.2" data-duration="9.7" data-track-index="2">
+        <span class="tag">ANALYST</span><span class="desc">Strategic gaps &amp; market positioning</span>
+      </div>
+      <div id="lt-wri" class="clip lower" data-start="59.4" data-duration="9.1" data-track-index="2">
+        <span class="tag">WRITER</span><span class="desc">Executive report with verified citations</span>
+      </div>
+
+      <!-- Narration (track 10) -->
+      <audio id="n1" src=".media/audio/voice/voice_001.wav" data-start="0" data-duration="11.8" data-track-index="10"></audio>
+      <audio id="n2" src=".media/audio/voice/voice_002.wav" data-start="12.3" data-duration="12.2" data-track-index="10"></audio>
+      <audio id="n3" src=".media/audio/voice/voice_003.wav" data-start="25" data-duration="9" data-track-index="10"></audio>
+      <audio id="n4" src=".media/audio/voice/voice_004.wav" data-start="34.5" data-duration="14.2" data-track-index="10"></audio>
+      <audio id="n5" src=".media/audio/voice/voice_005.wav" data-start="49.2" data-duration="9.7" data-track-index="10"></audio>
+      <audio id="n6" src=".media/audio/voice/voice_006.wav" data-start="59.4" data-duration="9.1" data-track-index="10"></audio>
+      <audio id="n7" src=".media/audio/voice/voice_007.wav" data-start="94.8" data-duration="9.6" data-track-index="10"></audio>
+      <audio id="n8" src=".media/audio/voice/voice_008.wav" data-start="106.8" data-duration="8.8" data-track-index="10"></audio>
+      <audio id="n9" src=".media/audio/voice/voice_009.wav" data-start="128.4" data-duration="11.8" data-track-index="10"></audio>
+      <audio id="n10" src=".media/audio/voice/voice_010.wav" data-start="141.4" data-duration="5.2" data-track-index="10"></audio>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      tl.from("#intro-eyebrow", { autoAlpha: 0, y: 30, duration: 0.6, ease: "power3.out" }, 0.4)
+        .from("#intro-h1", { autoAlpha: 0, y: 44, duration: 0.7, ease: "power3.out" }, 1.0)
+        .from("#intro-h2", { autoAlpha: 0, y: 44, duration: 0.7, ease: "power3.out" }, 1.8)
+        .from("#intro-sub", { autoAlpha: 0, y: 30, duration: 0.6, ease: "power3.out" }, 2.8)
+        .from("#intro-bar", { scaleX: 0, duration: 0.8, ease: "power2.out" }, 3.4);
+
+      tl.fromTo("#lt-inv", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 34.5)
+        .to("#lt-inv", { autoAlpha: 0, x: -40, duration: 0.4 }, 48.2)
+        .fromTo("#lt-ana", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 49.2)
+        .to("#lt-ana", { autoAlpha: 0, x: -40, duration: 0.4 }, 58.4)
+        .fromTo("#lt-wri", { autoAlpha: 0, x: -60 }, { autoAlpha: 1, x: 0, duration: 0.5, ease: "power3.out" }, 59.4)
+        .to("#lt-wri", { autoAlpha: 0, x: -40, duration: 0.4 }, 68.0);
+
+      tl.from("#proof-eyebrow", { autoAlpha: 0, y: 24, duration: 0.5, ease: "power3.out" }, 128.1)
+        .from("#stat-1", { autoAlpha: 0, y: 40, duration: 0.6, ease: "power3.out" }, 128.6)
+        .from("#stat-2", { autoAlpha: 0, y: 40, duration: 0.6, ease: "power3.out" }, 129.2)
+        .from("#stat-3", { autoAlpha: 0, y: 40, duration: 0.6, ease: "power3.out" }, 129.8)
+        .from("#stat-4", { autoAlpha: 0, y: 40, duration: 0.6, ease: "power3.out" }, 130.4)
+        .from("#proof-foot", { autoAlpha: 0, duration: 0.8 }, 131.4);
+
+      tl.from("#outro-logo", { autoAlpha: 0, scale: 0.8, duration: 0.6, ease: "back.out(1.6)" }, 141.2)
+        .from("#outro-tag", { autoAlpha: 0, y: 30, duration: 0.6, ease: "power3.out" }, 141.9)
+        .from("#outro-credit", { autoAlpha: 0, duration: 0.8 }, 142.7);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

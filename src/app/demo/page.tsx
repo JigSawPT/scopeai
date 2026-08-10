@@ -64,8 +64,8 @@ export default function DemoPage() {
         throw new Error("Demo execution failed");
       }
 
-      const report = await res.json();
-      router.push(`/report/${report.id}`);
+      const data = await res.json();
+      router.push(`/report/${data.order_id}`);
     } catch (err) {
       console.error(err);
       setLoading(false);
