@@ -1,0 +1,137 @@
+[
+  {
+    "category": "Marketing Agencies",
+    "targets": [
+      {
+        "name": "Kalungi",
+        "website": "https://www.kalungi.com",
+        "linkedin": "https://www.linkedin.com/company/kalungi/",
+        "decision_maker_role": "VP of Strategy or Head of Client Services",
+        "why_they_benefit": "Kalungi runs full-service GTM for 150+ B2B SaaS companies and needs competitive intel to build positioning and battlecards for every client engagement.",
+        "suggested_angle": "Automate the competitive research your team does manually for each new SaaS client—ScopeAI delivers positioning-ready reports in minutes instead of weeks."
+      },
+      {
+        "name": "Foundation Marketing",
+        "website": "https://foundationinc.co",
+        "linkedin": "https://www.linkedin.com/company/foundation-marketing/",
+        "decision_maker_role": "Director of Strategy or Content Lead",
+        "why_they_benefit": "Foundation specializes in B2B content strategy for SaaS brands and constantly needs competitor content audits and positioning gaps to inform editorial calendars.",
+        "suggested_angle": "Stop spending hours manually auditing competitor content—get AI-powered competitive content analysis you can drop straight into client strategy decks."
+      },
+      {
+        "name": "Single Grain",
+        "website": "https://www.singlegrain.com",
+        "linkedin": "https://www.linkedin.com/company/single-grain/",
+        "decision_maker_role": "VP of Marketing or Head of Growth",
+        "why_they_benefit": "Single Grain runs paid media and SEO for SaaS/tech clients who constantly ask 'how do we compare to X?' and need fast, data-backed answers.",
+        "suggested_angle": "Win more SaaS pitches by showing prospects exactly where they stand vs. competitors before they even sign—ScopeAI reports as a sales enablement tool."
+      },
+      {
+        "name": "Bay Leaf Digital",
+        "website": "https://www.bayleafdigital.com",
+        "linkedin": "https://www.linkedin.com/company/bay-leaf-digital/",
+        "decision_maker_role": "Founder or Director of Marketing",
+        "why_they_benefit": "Bay Leaf is a small agency focused exclusively on SaaS marketing and needs competitive positioning intel for every new client onboarding.",
+        "suggested_angle": "Scale your SaaS client onboarding with automated competitive reports that replace 10+ hours of manual research per client."
+      },
+      {
+        "name": "Hey Digital",
+        "website": "https://www.heydigital.co",
+        "linkedin": "https://www.linkedin.com/company/hey-digital/",
+        "decision_maker_role": "Head of Performance or Founder",
+        "why_they_benefit": "Hey Digital runs paid ads for B2B SaaS and needs competitor ad intelligence and pricing benchmarks to optimize campaigns and landing pages.",
+        "suggested_angle": "See exactly which competitor messaging and pricing your clients are up against before launching their next ad campaign."
+      }
+    ]
+  },
+  {
+    "category": "SaaS Founders",
+    "targets": [
+      {
+        "name": "Mangools",
+        "website": "https://mangools.com",
+        "linkedin": "https://www.linkedin.com/company/mangools/",
+        "founder_context": "Affordable SEO tool suite competing against Ahrefs, SEMrush, and Moz with a fraction of the budget.",
+        "why_they_benefit": "Mangools competes directly against Ahrefs and SEMrush and needs continuous pricing and feature intelligence to maintain its value positioning.",
+        "suggested_angle": "Know exactly when Ahrefs or SEMrush changes pricing, launches features, or shifts positioning—before your customers notice."
+      },
+      {
+        "name": "Socialinsider",
+        "website": "https://www.socialinsider.io",
+        "linkedin": "https://www.linkedin.com/company/socialinsider/",
+        "founder_context": "Social media analytics platform competing against Sprout Social, Hootsuite, and Dash Hudson.",
+        "why_they_benefit": "Socialinsider battles Sprout Social and Hootsuite for market share and needs real-time competitor feature tracking to stay differentiated.",
+        "suggested_angle": "Track every competitor feature launch and pricing change automatically so your product team can respond in days, not quarters."
+      },
+      {
+        "name": "KyLeads",
+        "website": "https://www.kyleads.com",
+        "linkedin": "https://www.linkedin.com/company/kyleads/",
+        "founder_context": "Popup and quiz maker competing against OptinMonster, Sleeknote, and Privy as a lean indie product.",
+        "why_they_benefit": "KyLeads competes in a crowded popup/lead-gen market and needs to monitor competitor pricing tiers, feature additions, and messaging shifts.",
+        "suggested_angle": "See how OptinMonster and Sleeknote are positioning themselves and adjust your messaging before you lose prospects to them."
+      },
+      {
+        "name": "Octoboard",
+        "website": "https://www.octoboard.com",
+        "linkedin": "https://www.linkedin.com/company/octoboard/",
+        "founder_context": "Marketing analytics and reporting platform competing against Agency Analytics, DashThis, and Whatagraph.",
+        "why_they_benefit": "Octoboard competes in the crowded marketing reporting space and needs competitor pricing and feature benchmarking to justify its position.",
+        "suggested_angle": "Get automated alerts when competitors like Agency Analytics or DashThis update pricing or launch new integrations."
+      },
+      {
+        "name": "WooRank",
+        "website": "https://www.woorank.com",
+        "linkedin": "https://www.linkedin.com/company/woorank/",
+        "founder_context": "Website review and SEO audit tool competing against SEMrush Site Audit, Ahrefs, and Screaming Frog.",
+        "why_they_benefit": "WooRank operates in the SEO tools market where competitors constantly evolve features and pricing, requiring ongoing competitive monitoring.",
+        "suggested_angle": "Benchmark your SEO tool's feature set and pricing against SEMrush and Ahrefs in real time instead of quarterly manual reviews."
+      }
+    ]
+  },
+  {
+    "category": "Freelance Consultants & Agencies",
+    "targets": [
+      {
+        "name": "Crayon (competitive intelligence consultancy ecosystem)",
+        "website": "https://www.crayon.co",
+        "linkedin": "https://www.linkedin.com/company/crayon/",
+        "decision_maker_role": "Partner Manager or CI Practice Lead",
+        "why_they_benefit": "Crayon's partner network includes dozens of independent CI consultants who could resell or recommend ScopeAI as a lighter-weight alternative for SMB clients.",
+        "suggested_angle": "Offer ScopeAI as a complementary tool in your CI practice for clients who need quick competitive snapshots before committing to enterprise platforms."
+      },
+      {
+        "name": "Kompyte (partner consultant network)",
+        "website": "https://www.kompyte.com",
+        "linkedin": "https://www.linkedin.com/company/kompyte/",
+        "decision_maker_role": "Partnerships Lead or Customer Success",
+        "why_they_benefit": "Kompyte's consultant partners serve mid-market SaaS companies and need affordable competitive intel options for smaller clients.",
+        "suggested_angle": "Give your smaller SaaS clients an affordable CI option at $49-149/report instead of pushing them to full enterprise subscriptions."
+      },
+      {
+        "name": "Katelyn Bourgoin (Buyer Research Consultant)",
+        "website": "https://www.katelynbourgoin.com",
+        "linkedin": "https://www.linkedin.com/in/katelynbourgoin/",
+        "decision_maker_role": "Founder (sole consultant)",
+        "why_they_benefit": "Katelyn runs buyer research workshops for SaaS companies and needs competitive positioning data to inform her customer research deliverables.",
+        "suggested_angle": "Enrich your buyer research with AI-powered competitive intelligence so clients see not just who their buyers are, but who else those buyers are considering."
+      },
+      {
+        "name": "Andy Crestodina (Orbit Media Studios)",
+        "website": "https://www.orbitmedia.com",
+        "linkedin": "https://www.linkedin.com/in/andycrestodina/",
+        "decision_maker_role": "Co-founder & CMO",
+        "why_they_benefit": "Andy consults on content strategy and SEO for SaaS companies and frequently analyzes competitor content gaps to advise clients.",
+        "suggested_angle": "Automate the competitive content audit you do manually for each engagement—get positioning and content gap analysis in minutes."
+      },
+      {
+        "name": "Peep Laja (Wynter)",
+        "website": "https://www.wynter.com",
+        "linkedin": "https://www.linkedin.com/in/peeplaja/",
+        "decision_maker_role": "Founder & CEO",
+        "why_they_benefit": "Wynter does B2B message testing and needs competitive messaging intel to contextualize how a client's positioning compares to their market.",
+        "suggested_angle": "Pair Wynter's message testing data with ScopeAI's competitive positioning reports to show clients not just what resonates, but how it stacks up against rivals."
+      }
+    ]
+  }
+]
