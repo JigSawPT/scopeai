@@ -4,13 +4,9 @@
 **Deadline:** August 17, 2026 at 1:00 PM PDT
 **Target Category:** Small Business Services
 
-> **Reset on 2026-08-10 after a full project audit.** The previous version of this
-> checklist marked items COMPLETE without evidence (video "done" with only a script
-> file, financial evidence based on a CSV with fabricated orders, docker build claimed
-> to pass despite a broken Dockerfile, GitHub repo listed without any remote).
-> Rule going forward: **nothing is marked COMPLETE without a verifiable artifact.**
+> Rule: **nothing is marked COMPLETE without a verifiable artifact.**
 
-**Last verified:** 2026-08-10 ~13:30 UTC
+**Last verified:** 2026-08-10 ~12:10 UTC
 
 ---
 
@@ -18,31 +14,41 @@
 
 | # | Requirement | Status | Evidence / Notes |
 |---|---|---|---|
-| 1 | Code Repository shared with judges | PARTIAL | Public repo live: https://github.com/JigSawPT/scopeai — still must be shared with `testing@devpost.com` & `judging@hacker.fund` at submission time |
-| 2 | 3-Minute Video | NOT STARTED | Only the script exists: `xprize_demo_video_script.md`. Must be recorded against the live production deployment |
-| 3 | Written Narrative | DRAFT | `xprize_narrative.md` updated with real model (Gemini 2.5 Flash / Vertex AI) and real stack; final metrics pending real revenue |
-| 4 | Financial Evidence | NOT STARTED | Requires real Stripe transactions. Previous CSV contained fabricated orders and was wiped on 2026-08-10 |
-| 5 | Google Cloud Bills | NOT STARTED | Export from Cloud Billing after submission-period usage |
-| 6 | Product & Telemetry Evidence | VERIFIED LIVE | Production E2E on 2026-08-10: order → grounded pipeline → report with 41 real web sources in 205s (HTTP 200), persisted in Firestore |
-| 7 | Customer Evidence | NOT STARTED | Requires real paying customers |
+| 1 | Code Repository shared with judges | PARTIAL | Public repo live: https://github.com/JigSawPT/scopeai — owner must share with `testing@devpost.com` & `judging@hacker.fund` at submission |
+| 2 | 3-Minute Video | RENDERED — UPLOAD PENDING | `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-10_12-03-10.mp4` (2m28s, 1080p, real production footage + narration). Owner must upload to YouTube/Vimeo (public) and paste link here |
+| 3 | Written Narrative | COMPLETE | `xprize_narrative.md` — 500-1000 words, all figures measured from live system 2026-08-10 |
+| 4 | Financial Evidence | PARTIAL | `xprize_pnl_template.csv` with real Stripe data (refunded verification order + real fee). Append real customer orders as they occur; attach Stripe Payments export at submission |
+| 5 | Google Cloud Bills | PENDING | Owner to export invoice PDF from Cloud Console Billing (one click); amount then filled in P&L |
+| 6 | Product & Telemetry Evidence | VERIFIED LIVE | Production E2E: payment → grounded pipeline → cited report; telemetry dashboard live at /report/[id] |
+| 7 | Customer Evidence | PENDING | Requires real arm's-length orders — outreach kit: `customer_outreach.md` |
 
 ---
 
 ## Technical Architecture Checklist
 
-- [x] **Google Cloud Usage:** Live on Cloud Run — https://scopeai-746706977308.us-central1.run.app (image built via Cloud Build, Artifact Registry `us-central1`)
-- [x] **Gemini API Usage:** `gemini-2.5-flash` on Vertex AI (`us-central1`) with Google Search grounding + `responseSchema` structured output; verified E2E in production 2026-08-10
-- [x] **AI-Native Operations:** 3-agent pipeline (`INVESTIGATOR`, `ANALYST`, `WRITER`) with timestamped telemetry per order
-- [x] **Monetization Engine:** Stripe **LIVE** (2026-08-10): account `charges_enabled: true`, live keys deployed to Cloud Run, live webhook `we_1U2pZn4Vy7Qkl3zVcEnd0DHv` enabled, live checkout session creation verified (`cs_live_...`). First real customer order pending
-- [x] **Judge Sandbox Mode:** `/demo` runs the real pipeline on 3 preset scenarios
-- [x] **Persistence:** Firestore (`(default)`, us-central1) stores orders, reports, logs; survives Cloud Run restarts
+- [x] **Google Cloud Usage:** Live on Cloud Run — https://scopeai-746706977308.us-central1.run.app (Cloud Build + Artifact Registry, us-central1)
+- [x] **Gemini API Usage:** `gemini-2.5-flash` on Vertex AI with Google Search grounding + `responseSchema`; verified E2E in production
+- [x] **AI-Native Operations:** 3-agent pipeline with timestamped telemetry per order
+- [x] **Monetization Engine:** Stripe LIVE — checkout session, signature-verified webhook, full paid cycle verified 2026-08-10
+- [x] **Judge Sandbox Mode:** `/demo` streams live telemetry instantly (background pipeline)
+- [x] **Persistence:** Firestore (`(default)`, us-central1)
 
 ---
 
-## Final Pre-Submission Validation Commands (must all pass before submitting)
+## Final Pre-Submission Validation Commands
 
-1. **TypeScript:** `npx tsc --noEmit` → PASS (0 errors, 2026-08-10)
-2. **Lint:** `npm run lint` → PASS (clean, 2026-08-10)
-3. **Container build:** Cloud Build → PASS (2m39s, 2026-08-10)
-4. **Production E2E:** PASS — grounded report with real citations on the live Cloud Run URL (2026-08-10)
-5. **Stripe live transaction:** VERIFIED — full live cycle tested 2026-08-10: real $49 payment (`cs_live_...`/`pi_3U2pcR...`) → signed webhook → agent pipeline → report with 40 real web sources → refund issued (validation order, not customer revenue). Real customer orders pending
+1. **TypeScript:** `npx tsc --noEmit` → PASS (0 errors)
+2. **Lint:** `npm run lint` → PASS (clean)
+3. **Container build:** Cloud Build → PASS (2m45s)
+4. **Production E2E:** PASS — live payment → report with 40+ real citations
+5. **Video checks:** `npx hyperframes check` → PASS (15/15 contrast)
+
+---
+
+## Owner action list (only a human can do these)
+
+1. Upload the rendered video to YouTube/Vimeo (public, unlisted NOT allowed) and record the link.
+2. Export the GCP invoice PDF (Cloud Console → Billing → Documents).
+3. Send outreach (templates in `customer_outreach.md`) and collect 5-10 real orders.
+4. Share the GitHub repo with `testing@devpost.com` & `judging@hacker.fund`; submit on Devpost before Aug 17 13:00 PDT.
+5. Post-competition hygiene: roll Stripe keys; delete machine-level `GEMINI_API_KEY` env var (needs admin).

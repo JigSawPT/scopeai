@@ -1,1 +1,5 @@
 Month,Category,Description,Revenue (USD),Expenses (USD),Net Profit (USD)
+Aug 2026,Revenue,Verification order $49.00 (founder card, full refund same day — not customer revenue),0.00,0.00,0.00
+Aug 2026,Expenses,Stripe processing fee on refunded verification order (2.9% + $0.30; fees not returned on refund),0.00,1.89,-1.89
+Aug 2026,Expenses,Google Cloud (Cloud Run + Vertex AI + Firestore + Cloud Build) — amount per official invoice PDF (pending export at submission),0.00,0.00,0.00
+TOTAL,ALL,Project lifetime to date (real customer orders appended as they occur),0.00,1.89,-1.89
