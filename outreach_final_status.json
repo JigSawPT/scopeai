@@ -1,0 +1,110 @@
+[
+  {
+    "target": "Kalungi",
+    "url": "https://www.linkedin.com/in/andrea-nwachukwu-a20b5b213",
+    "state": "UNKNOWN",
+    "prevAction": "failed: Estado inesperado: UNKNOWN:Ver mais,Conectar com F"
+  },
+  {
+    "target": "Foundation Marketing",
+    "url": "https://www.linkedin.com/in/maria-sousa-77712a137",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Single Grain",
+    "url": "https://www.linkedin.com/in/scarlettclark",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Bay Leaf Digital",
+    "url": "https://www.linkedin.com/in/ian-lipscomb0216",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Hey Digital",
+    "url": "https://www.linkedin.com/in/rbnrnv",
+    "state": "UNKNOWN",
+    "prevAction": "failed: Estado inesperado: UNKNOWN:Ver mais,Conectar com P"
+  },
+  {
+    "target": "Mangools",
+    "url": "https://www.linkedin.com/in/alejandro-corredor-castellanos-6b615831b",
+    "state": "UNKNOWN",
+    "prevAction": "failed: Estado inesperado: UNKNOWN:Ver mais,Conectar com J"
+  },
+  {
+    "target": "Socialinsider",
+    "url": "https://www.linkedin.com/in/nidhi-parikh7",
+    "state": "UNKNOWN",
+    "prevAction": "failed: Estado inesperado: UNKNOWN:Ver mais,Conectar com R"
+  },
+  {
+    "target": "KyLeads",
+    "url": "https://www.linkedin.com/in/michael-gieske-49159870",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Octoboard",
+    "url": "https://www.linkedin.com/in/raquelrreis",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "WooRank",
+    "url": "https://www.linkedin.com/in/jorgedanielpacheco",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Chris Frantz",
+    "url": "https://www.linkedin.com/in/ctfrantz",
+    "state": "UNKNOWN",
+    "prevAction": "failed: Estado inesperado: UNKNOWN:Deslizar para item 2,De"
+  },
+  {
+    "target": "Zeh Fernandes",
+    "url": "https://www.linkedin.com/in/zehfernandes",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Attio",
+    "url": "https://www.linkedin.com/in/fabiovilarteixeira",
+    "state": "UNKNOWN",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "Linear",
+    "url": "https://www.linkedin.com/in/tarasbodashko",
+    "state": "PENDING",
+    "prevAction": "pending-already"
+  },
+  {
+    "target": "James Hawkins",
+    "url": "https://www.linkedin.com/in/j-hawkins",
+    "state": "UNKNOWN",
+    "prevAction": "failed: Estado inesperado: UNKNOWN:Deslizar para item 2,De"
+  },
+  {
+    "target": "Katelyn Bourgoin",
+    "url": "https://www.linkedin.com/in/katebour",
+    "state": "FOLLOW",
+    "prevAction": "followed"
+  },
+  {
+    "target": "Andy Crestodina",
+    "url": "https://www.linkedin.com/in/andycrestodina",
+    "state": "FOLLOW",
+    "prevAction": "followed"
+  },
+  {
+    "target": "Peep Laja",
+    "url": "https://www.linkedin.com/in/peeplaja",
+    "state": "FOLLOW",
+    "prevAction": "followed"
+  }
+]

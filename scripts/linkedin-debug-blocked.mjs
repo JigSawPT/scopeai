@@ -1,0 +1,43 @@
+import { chromium } from 'playwright';
+
+const SESSION = 'C:\\Users\\jcoma\\AppData\\Local\\Temp\\playwright-linkedin-session';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+const browser = await chromium.launchPersistentContext(SESSION, {
+  headless: false,
+  viewport: { width: 1280, height: 850 },
+  args: ['--disable-blink-features=AutomationControlled'],
+});
+const page = browser.pages()[0] || await browser.newPage();
+
+await page.goto('https://www.linkedin.com/search/results/people/?keywords=' + encodeURIComponent('Socialinsider'), { waitUntil: 'domcontentloaded', timeout: 30000 });
+await page.waitForTimeout(4500);
+const href = await page.evaluate(() => {
+  const links = Array.from(document.querySelectorAll('a[href*="/in/"]'));
+  for (const l of links) { const h = l.getAttribute('href'); if (h && h.includes('/in/')) return h; }
+  return null;
+});
+const profileUrl = (href.startsWith('http') ? href : 'https://www.linkedin.com' + href).replace(/\?trk=.*$/, '');
+await page.goto(profileUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+await page.waitForTimeout(6000);
+
+const composeHref = await page.evaluate(() => {
+  const vis = el => {
+    const s = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+    return s.display !== 'none' && s.visibility !== 'hidden' && r.height > 0 && r.width > 0;
+  };
+  const a = Array.from(document.querySelectorAll('a')).find(e => vis(e) && /message|mensagem/i.test((e.textContent || '').trim()) && (e.getAttribute('href') || '').includes('messaging/compose'));
+  return a ? a.getAttribute('href') : null;
+});
+console.log('profile:', profileUrl);
+console.log('compose href:', composeHref);
+
+if (composeHref) {
+  await page.goto('https://www.linkedin.com' + composeHref, { waitUntil: 'domcontentloaded', timeout: 30000 });
+  await page.waitForTimeout(9000);
+  const bodyText = await page.evaluate(() => document.body.innerText.slice(0, 900));
+  console.log('compose body:', JSON.stringify(bodyText.slice(0, 700)));
+}
+
+await browser.close();

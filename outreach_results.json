@@ -1,0 +1,42 @@
+[
+  {
+    "target": "Socialinsider",
+    "profile": "https://www.linkedin.com/in/nidhi-parikh7/",
+    "action": "failed: Editor visivel nao encontrado"
+  },
+  {
+    "target": "KyLeads",
+    "profile": "https://www.linkedin.com/in/michael-gieske-49159870/",
+    "action": "failed: Editor visivel nao encontrado"
+  },
+  {
+    "target": "Octoboard",
+    "profile": "https://www.linkedin.com/in/raquelrreis/",
+    "action": "message-sent:compose-gone"
+  },
+  {
+    "target": "WooRank",
+    "profile": "https://www.linkedin.com/in/jorgedanielpacheco/",
+    "action": "failed: Editor visivel nao encontrado"
+  },
+  {
+    "target": "Chris Frantz",
+    "profile": "https://www.linkedin.com/in/ctfrantz/",
+    "action": "message-sent:compose-gone"
+  },
+  {
+    "target": "Zeh Fernandes",
+    "profile": "https://www.linkedin.com/in/zehfernandes/",
+    "action": "message-sent:compose-gone"
+  },
+  {
+    "target": "Linear",
+    "profile": "https://www.linkedin.com/in/tarasbodashko/",
+    "action": "failed: Editor visivel nao encontrado"
+  },
+  {
+    "target": "James Hawkins",
+    "profile": "https://www.linkedin.com/in/j-hawkins/",
+    "action": "message-sent:compose-gone"
+  }
+]
