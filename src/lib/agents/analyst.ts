@@ -1,5 +1,21 @@
-import { generateGroundedContent, extractJSON, getErrorMessage } from '../gemini';
+import { Type } from '@google/genai';
+import { generateGroundedContent, extractJSON, getErrorMessage, JsonSchema } from '../gemini';
 import { AnalysisResult, CompetitorData, AgentLogEntry, OrderRequest, SearchCitation } from './types';
+
+const analysisSchema: JsonSchema = {
+  type: Type.OBJECT,
+  properties: {
+    executive_summary: { type: Type.STRING },
+    market_overview: { type: Type.STRING },
+    strategic_gaps: { type: Type.ARRAY, items: { type: Type.STRING } },
+    opportunities: { type: Type.ARRAY, items: { type: Type.STRING } },
+    threats: { type: Type.ARRAY, items: { type: Type.STRING } },
+    recommendations: { type: Type.ARRAY, items: { type: Type.STRING } },
+    market_positioning: { type: Type.STRING },
+  },
+  required: ['executive_summary', 'market_overview', 'strategic_gaps', 'opportunities', 'threats', 'recommendations', 'market_positioning'],
+  propertyOrdering: ['executive_summary', 'market_overview', 'strategic_gaps', 'opportunities', 'threats', 'recommendations', 'market_positioning'],
+};
 
 export async function runAnalyst(
   order: OrderRequest, 
@@ -53,7 +69,7 @@ Search for:
   try {
     addLog('Analyzing Market', 'Executing Google Search queries for industry trends and market gaps...');
     const startTime = Date.now();
-    const { text, sources } = await generateGroundedContent(prompt, systemInstruction);
+    const { text, sources } = await generateGroundedContent(prompt, systemInstruction, analysisSchema);
     const durationMs = Date.now() - startTime;
 
     const fallbackAnalysis = {

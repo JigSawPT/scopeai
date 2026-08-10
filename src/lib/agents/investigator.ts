@@ -1,4 +1,5 @@
-import { generateGroundedContent, extractJSON, getErrorMessage } from '../gemini';
+import { Type } from '@google/genai';
+import { generateGroundedContent, extractJSON, getErrorMessage, JsonSchema } from '../gemini';
 import { CompetitorData, AgentLogEntry, OrderRequest } from './types';
 
 interface RawCompetitor {
@@ -10,6 +11,24 @@ interface RawCompetitor {
   reviews_summary?: string;
   market_position?: string;
 }
+
+const competitorSchema: JsonSchema = {
+  type: Type.ARRAY,
+  items: {
+    type: Type.OBJECT,
+    properties: {
+      name: { type: Type.STRING },
+      website: { type: Type.STRING },
+      pricing: { type: Type.STRING },
+      strengths: { type: Type.ARRAY, items: { type: Type.STRING } },
+      weaknesses: { type: Type.ARRAY, items: { type: Type.STRING } },
+      reviews_summary: { type: Type.STRING },
+      market_position: { type: Type.STRING },
+    },
+    required: ['name', 'website', 'pricing', 'strengths', 'weaknesses', 'reviews_summary', 'market_position'],
+    propertyOrdering: ['name', 'website', 'pricing', 'strengths', 'weaknesses', 'reviews_summary', 'market_position'],
+  },
+};
 
 export async function runInvestigator(order: OrderRequest): Promise<{ data: CompetitorData[], logs: AgentLogEntry[] }> {
   const logs: AgentLogEntry[] = [];
@@ -60,7 +79,7 @@ Search for:
   try {
     addLog('Searching Web', `Executing live Google Search queries for competitors: ${order.competitors.join(', ')}`);
     const startTime = Date.now();
-    const { text, sources } = await generateGroundedContent(prompt, systemInstruction);
+    const { text, sources } = await generateGroundedContent(prompt, systemInstruction, competitorSchema);
     const durationMs = Date.now() - startTime;
     
     addLog('Parsing Web Data', `Received grounded search response with ${sources.length} verified web sources.`);

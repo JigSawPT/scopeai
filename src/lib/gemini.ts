@@ -1,4 +1,4 @@
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenAI, Type } from '@google/genai';
 import { SearchCitation } from './agents/types';
 import fs from 'fs';
 import path from 'path';
@@ -69,6 +69,14 @@ interface GroundingChunk {
 interface GroundingMetadata {
   groundingChunks?: GroundingChunk[];
 }
+
+export type JsonSchema = {
+  type: Type;
+  properties?: Record<string, JsonSchema>;
+  items?: JsonSchema;
+  required?: string[];
+  propertyOrdering?: string[];
+};
 
 export function extractJSON<T>(text: string, fallback: T): T {
   if (!text) return fallback;
@@ -156,7 +164,8 @@ export async function generateContent(prompt: string, systemInstruction?: string
 
 async function groundedAttempt(
   prompt: string,
-  systemInstruction?: string
+  systemInstruction?: string,
+  schema?: JsonSchema
 ): Promise<{ text: string; sources: SearchCitation[] }> {
   const response = await ai!.models.generateContent({
     model: GEMINI_MODEL,
@@ -164,6 +173,9 @@ async function groundedAttempt(
     config: {
       systemInstruction: systemInstruction || undefined,
       tools: [{ googleSearch: {} }],
+      ...(schema
+        ? { responseMimeType: 'application/json', responseSchema: schema }
+        : {}),
     },
   });
 
@@ -201,26 +213,29 @@ async function groundedAttempt(
 
 export async function generateGroundedContent(
   prompt: string, 
-  systemInstruction?: string
+  systemInstruction?: string,
+  schema?: JsonSchema
 ): Promise<{ text: string; sources: SearchCitation[] }> {
   if (!ai) {
     throw new Error("Gemini client is not initialized. Set GEMINI_PROVIDER/GEMINI_API_KEY or provide Vertex AI credentials.");
   }
 
-  // Grounded calls (up to 2 attempts — thinking models occasionally return empty text)
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  // Grounded calls: attempt 1 with structured output schema (if provided),
+  // attempt 2 without schema. Thinking models occasionally return empty text.
+  const attempts: (JsonSchema | undefined)[] = schema ? [schema, undefined] : [undefined, undefined];
+  for (let attempt = 0; attempt < attempts.length; attempt++) {
     try {
-      const result = await groundedAttempt(prompt, systemInstruction);
+      const result = await groundedAttempt(prompt, systemInstruction, attempts[attempt]);
       if (result.text.trim().length > 0) {
         console.log(`[Gemini Grounding] SUCCESS — ${result.sources.length} web sources found.`);
         return result;
       }
-      console.warn(`[Gemini Grounding] Attempt ${attempt} returned empty text.`);
+      console.warn(`[Gemini Grounding] Attempt ${attempt + 1} returned empty text.`);
     } catch (groundingError: unknown) {
-      console.warn(`[Gemini Grounding] Live Search tool unavailable (${getErrorStatus(groundingError) || getErrorMessage(groundingError)}). Falling back to standard intelligence.`);
-      break;
+      console.warn(`[Gemini Grounding] Attempt ${attempt + 1} failed (${getErrorStatus(groundingError) || getErrorMessage(groundingError)}).`);
     }
   }
+  console.warn('[Gemini Grounding] All grounded attempts failed. Falling back to standard intelligence.');
 
   // Fallback: Standard model (with 1 backoff retry)
   try {
