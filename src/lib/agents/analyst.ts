@@ -1,4 +1,4 @@
-import { generateGroundedContent, extractJSON } from '../gemini';
+import { generateGroundedContent, extractJSON, getErrorMessage } from '../gemini';
 import { AnalysisResult, CompetitorData, AgentLogEntry, OrderRequest, SearchCitation } from './types';
 
 export async function runAnalyst(
@@ -57,16 +57,16 @@ Search for:
     const durationMs = Date.now() - startTime;
 
     const fallbackAnalysis = {
-      executive_summary: `${order.business_name} has a clear market entry opportunity in ${order.industry} by addressing key competitor pricing and feature gaps.`,
-      market_overview: `The ${order.industry} market is evolving rapidly with increasing demand for specialized, agile solutions.`,
-      strategic_gaps: ["Transparent pricing", "Dedicated customer onboarding", "Native integration ecosystem"],
-      opportunities: ["Capitalize on competitor pricing changes", "Introduce modern user experience"],
-      threats: ["Established competitor brand loyalty", "Resource constraints"],
-      recommendations: ["Position around speed and transparency", "Target unserved SMB segments"],
-      market_positioning: `${order.business_name} is the modern, transparent alternative in ${order.industry}.`
+      executive_summary: `Degraded mode: the model returned no parseable analysis for ${order.business_name} in ${order.industry}.`,
+      market_overview: `Degraded mode: no market overview could be generated for the ${order.industry} market.`,
+      strategic_gaps: ["Unavailable — model returned no data"],
+      opportunities: ["Unavailable — model returned no data"],
+      threats: ["Unavailable — model returned no data"],
+      recommendations: ["Unavailable — model returned no data"],
+      market_positioning: `Unavailable — no positioning statement could be generated for ${order.business_name}.`
     };
 
-    const parsed = extractJSON<any>(text, fallbackAnalysis);
+    const parsed = extractJSON<Partial<AnalysisResult>>(text, fallbackAnalysis);
 
     // Collect competitor sources and market sources
     const allCompetitorSources = competitors.flatMap(c => c.sources || []);
@@ -96,8 +96,8 @@ Search for:
     logs[logs.length - 1].durationMs = durationMs;
 
     return { data, logs };
-  } catch (error: any) {
-    addLog('Error', `Analyst failed: ${error.message}`, 'error');
+  } catch (error: unknown) {
+    addLog('Error', `Analyst failed: ${getErrorMessage(error)}`, 'error');
     throw error;
   }
 }

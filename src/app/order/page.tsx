@@ -77,8 +77,8 @@ function OrderForm() {
       } else {
         router.push(`/report/${data.order_id}`);
       }
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred.");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "An unexpected error occurred.");
       setLoading(false);
     }
   };
@@ -112,7 +112,7 @@ function OrderForm() {
           </div>
           <div className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Gemini 3.6 Flash Ready
+            Gemini 2.5 Flash Ready
           </div>
         </div>
       </header>
@@ -126,7 +126,7 @@ function OrderForm() {
             Commission Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#7C3AED]">AI Report</span>
           </h1>
           <p className="text-slate-400 text-base max-w-xl mx-auto">
-            Provide details about your business and competitors. Our Gemini 3.6 agents will begin autonomous research immediately.
+            Provide details about your business and competitors. Our Gemini 2.5 agents will begin autonomous research immediately.
           </p>
         </div>
 
@@ -158,7 +158,7 @@ function OrderForm() {
           {loading && (
             <div className="absolute inset-0 bg-[#020617]/90 backdrop-blur-md z-30 flex flex-col items-center justify-center p-6 text-center">
               <div className="w-16 h-16 rounded-full border-4 border-[#00E5FF]/20 border-t-[#00E5FF] animate-spin mb-6" />
-              <h3 className="text-xl font-bold mb-2 text-white">Deploying Gemini 3.6 Flash Agents...</h3>
+              <h3 className="text-xl font-bold mb-2 text-white">Deploying Gemini 2.5 Flash Agents...</h3>
               <p className="text-slate-400 text-sm max-w-md animate-pulse">
                 Investigator Agent is initializing competitor scrapers and market cross-references. Redirecting to live execution dashboard...
               </p>
@@ -290,7 +290,7 @@ function OrderForm() {
               </button>
               <div className="flex items-center justify-center gap-4 mt-4 text-xs text-slate-500">
                 <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Instant Execution</span>
-                <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-yellow-400" /> Powered by Gemini 3.6 Flash</span>
+                <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-yellow-400" /> Powered by Gemini 2.5 Flash</span>
               </div>
             </div>
           </form>

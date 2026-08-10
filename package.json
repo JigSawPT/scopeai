@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^8.7.1",
     "@google/genai": "^2.16.0",
     "framer-motion": "^13.0.0",
     "lucide-react": "^1.30.0",

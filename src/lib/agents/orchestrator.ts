@@ -3,13 +3,13 @@ import { runInvestigator } from './investigator';
 import { runAnalyst } from './analyst';
 import { runWriter } from './writer';
 import { storeLogs, saveReport, updateOrderStatus } from '../store';
-import { delay } from '../gemini';
+import { getErrorMessage } from '../gemini';
 
 export async function runAgentPipeline(order: OrderRequest): Promise<Report> {
   const allLogs: AgentLogEntry[] = [];
   const reportId = crypto.randomUUID();
 
-  const addOrchestratorLog = (action: string, details: string, status: 'running' | 'completed' | 'error' = 'running') => {
+  const addOrchestratorLog = async (action: string, details: string, status: 'running' | 'completed' | 'error' = 'running') => {
     const log: AgentLogEntry = {
       id: crypto.randomUUID(),
       timestamp: new Date().toISOString(),
@@ -19,33 +19,29 @@ export async function runAgentPipeline(order: OrderRequest): Promise<Report> {
       status
     };
     allLogs.push(log);
-    storeLogs(order.id, [log]);
+    await storeLogs(order.id, [log]);
   };
 
   try {
-    updateOrderStatus(order.id, 'processing');
-    addOrchestratorLog('Started', `Beginning pipeline for order ${order.id}`);
+    await updateOrderStatus(order.id, 'processing');
+    await addOrchestratorLog('Started', `Beginning pipeline for order ${order.id}`);
 
     // 1. Investigator (Google Search Grounded)
     const { data: competitors, logs: invLogs } = await runInvestigator(order);
     allLogs.push(...invLogs);
-    storeLogs(order.id, invLogs);
-
-    await delay(8000);
+    await storeLogs(order.id, invLogs);
 
     // 2. Analyst (Google Search Grounded)
     const { data: analysis, logs: anaLogs } = await runAnalyst(order, competitors);
     allLogs.push(...anaLogs);
-    storeLogs(order.id, anaLogs);
-
-    await delay(8000);
+    await storeLogs(order.id, anaLogs);
 
     // 3. Writer (Markdown Report Generator)
     const { data: markdown, logs: writLogs } = await runWriter(order, analysis);
     allLogs.push(...writLogs);
-    storeLogs(order.id, writLogs);
+    await storeLogs(order.id, writLogs);
 
-    addOrchestratorLog('Completed', 'Grounded agent pipeline finished successfully', 'completed');
+    await addOrchestratorLog('Completed', 'Grounded agent pipeline finished successfully', 'completed');
 
     const report: Report = {
       id: reportId,
@@ -57,13 +53,13 @@ export async function runAgentPipeline(order: OrderRequest): Promise<Report> {
       generated_at: new Date().toISOString()
     };
     
-    saveReport(report);
-    updateOrderStatus(order.id, 'completed');
+    await saveReport(report);
+    await updateOrderStatus(order.id, 'completed');
 
     return report;
-  } catch (error: any) {
-    addOrchestratorLog('Failed', `Pipeline failed: ${error.message}`, 'error');
-    updateOrderStatus(order.id, 'error');
+  } catch (error: unknown) {
+    await addOrchestratorLog('Failed', `Pipeline failed: ${getErrorMessage(error)}`, 'error');
+    await updateOrderStatus(order.id, 'error');
     throw error;
   }
 }

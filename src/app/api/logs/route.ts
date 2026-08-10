@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
+import { connection } from 'next/server';
 import { getReport, getLogs } from '@/lib/store';
 
-export const dynamic = 'force-dynamic';
-
 export async function GET(request: Request) {
+  await connection();
+
   const { searchParams } = new URL(request.url);
   // Support both ?id= and ?order_id= for flexibility
   const id = searchParams.get('id') || searchParams.get('order_id');
@@ -13,13 +14,13 @@ export async function GET(request: Request) {
   }
 
   // Try to find the report by report id OR by order id
-  const report = getReport(id);
+  const report = await getReport(id);
   
   if (report) {
     return NextResponse.json({ report, logs: report.logs });
   }
 
   // If no full report yet, return partial logs (pipeline may still be running)
-  const logs = getLogs(id);
+  const logs = await getLogs(id);
   return NextResponse.json({ logs, report: null });
 }

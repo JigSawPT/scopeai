@@ -3,6 +3,7 @@ import { stripe, TIER_PRICES } from '@/lib/stripe';
 import { OrderRequest } from '@/lib/agents/types';
 import { saveOrder } from '@/lib/store';
 import { runAgentPipeline } from '@/lib/agents/orchestrator';
+import { getErrorMessage } from '@/lib/gemini';
 
 export async function POST(request: Request) {
   try {
@@ -25,7 +26,7 @@ export async function POST(request: Request) {
       created_at: new Date().toISOString(),
     };
 
-    saveOrder(order);
+    await saveOrder(order);
 
     const origin = request.headers.get('origin') || process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
@@ -68,8 +69,8 @@ export async function POST(request: Request) {
       message: 'Sandbox evaluation mode active — redirecting directly to report execution.'
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Stripe Checkout Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: getErrorMessage(error) }, { status: 500 });
   }
 }

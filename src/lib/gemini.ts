@@ -3,51 +3,85 @@ import { SearchCitation } from './agents/types';
 import fs from 'fs';
 import path from 'path';
 
-export const GEMINI_MODEL = 'gemini-2.0-flash';
+export const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
 
-let ai: GoogleGenAI | null = null;
+const vertexOptions = {
+  vertexai: true,
+  location: process.env.GCP_LOCATION || 'us-central1',
+  project: process.env.GCP_PROJECT_ID,
+};
 
-// Check for Vertex AI GCP Service Account JSON key or gcloud Application Default Credentials (uses $150 GCP credits)
-const gcpKeyPath = path.join(process.cwd(), 'gcp-key.json');
-const gcloudAdcPath = path.join(process.env.APPDATA || '', 'gcloud', 'application_default_credentials.json');
+function initClient(): { client: GoogleGenAI | null; provider: string } {
+  const requested = process.env.GEMINI_PROVIDER;
 
-if (fs.existsSync(gcpKeyPath)) {
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = gcpKeyPath;
-  console.log('[Gemini SDK] Initializing with Google Cloud Vertex AI (gcp-key.json)...');
-  ai = new GoogleGenAI({
-    vertexai: true,
-    location: process.env.GCP_LOCATION || 'us-central1',
-    project: process.env.GCP_PROJECT_ID
-  });
-} else if (fs.existsSync(gcloudAdcPath)) {
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = gcloudAdcPath;
-  console.log('[Gemini SDK] Initializing with Google Cloud Vertex AI (gcloud ADC credentials)...');
-  ai = new GoogleGenAI({
-    vertexai: true,
-    location: process.env.GCP_LOCATION || 'us-central1',
-    project: process.env.GCP_PROJECT_ID
-  });
-} else if (process.env.GEMINI_API_KEY) {
-  ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+  if (requested === 'vertex') {
+    return { client: new GoogleGenAI(vertexOptions), provider: 'vertex (forced via GEMINI_PROVIDER)' };
+  }
+  if (requested === 'aistudio') {
+    if (!process.env.GEMINI_API_KEY) return { client: null, provider: 'none' };
+    return { client: new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }), provider: 'aistudio (forced via GEMINI_PROVIDER)' };
+  }
+
+  const gcpKeyPath = path.join(process.cwd(), 'gcp-key.json');
+  if (fs.existsSync(gcpKeyPath)) {
+    process.env.GOOGLE_APPLICATION_CREDENTIALS = gcpKeyPath;
+    return { client: new GoogleGenAI(vertexOptions), provider: 'vertex (gcp-key.json)' };
+  }
+
+  const home = process.env.HOME || process.env.USERPROFILE || '';
+  const configDir = process.env.APPDATA || path.join(home, '.config');
+  const adcPath = path.join(configDir, 'gcloud', 'application_default_credentials.json');
+  if (fs.existsSync(adcPath)) {
+    process.env.GOOGLE_APPLICATION_CREDENTIALS = adcPath;
+    return { client: new GoogleGenAI(vertexOptions), provider: 'vertex (gcloud ADC)' };
+  }
+
+  if (process.env.K_SERVICE || process.env.K_REVISION) {
+    return { client: new GoogleGenAI(vertexOptions), provider: 'vertex (Cloud Run metadata)' };
+  }
+
+  if (process.env.GEMINI_API_KEY) {
+    return { client: new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY }), provider: 'aistudio (API key)' };
+  }
+
+  return { client: null, provider: 'none' };
 }
 
+const initialized = initClient();
+const ai = initialized.client;
+console.log(`[Gemini SDK] provider=${initialized.provider} model=${GEMINI_MODEL}`);
+
 export const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export function getErrorMessage(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  return String(err);
+}
+
+function getErrorStatus(err: unknown): number | undefined {
+  return (err as { status?: number })?.status;
+}
+
+interface GroundingChunk {
+  web?: { uri?: string; title?: string };
+}
+
+interface GroundingMetadata {
+  groundingChunks?: GroundingChunk[];
+}
 
 export function extractJSON<T>(text: string, fallback: T): T {
   if (!text) return fallback;
 
-  // Attempt 1: Direct JSON parse
   try {
     return JSON.parse(text);
   } catch {}
 
-  // Attempt 2: Strip code fences
   const cleaned = text.replace(/```json/gi, '').replace(/```/g, '').trim();
   try {
     return JSON.parse(cleaned);
   } catch {}
 
-  // Attempt 3: Extract JSON Array [...]
   const firstBracket = cleaned.indexOf('[');
   const lastBracket = cleaned.lastIndexOf(']');
   if (firstBracket !== -1 && lastBracket > firstBracket) {
@@ -57,7 +91,6 @@ export function extractJSON<T>(text: string, fallback: T): T {
     } catch {}
   }
 
-  // Attempt 4: Extract JSON Object {...}
   const firstBrace = cleaned.indexOf('{');
   const lastBrace = cleaned.lastIndexOf('}');
   if (firstBrace !== -1 && lastBrace > firstBrace) {
@@ -85,15 +118,17 @@ async function singleCallWithRetry<T>(
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await fn();
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const status = getErrorStatus(error);
+      const message = getErrorMessage(error);
       const isQuotaError = 
-        error?.status === 429 || 
-        error?.message?.includes('429') || 
-        error?.message?.includes('RESOURCE_EXHAUSTED') ||
-        error?.message?.includes('quota');
+        status === 429 || 
+        message.includes('429') || 
+        message.includes('RESOURCE_EXHAUSTED') ||
+        message.includes('quota');
 
       if (isQuotaError && attempt < maxRetries) {
-        console.warn(`[Gemini 3.6 Flash] Rate limit (Attempt ${attempt}/${maxRetries}). Waiting ${currentDelay / 1000}s...`);
+        console.warn(`[${GEMINI_MODEL}] Rate limit (Attempt ${attempt}/${maxRetries}). Waiting ${currentDelay / 1000}s...`);
         await delay(currentDelay);
         currentDelay += 10000;
       } else {
@@ -106,7 +141,7 @@ async function singleCallWithRetry<T>(
 
 export async function generateContent(prompt: string, systemInstruction?: string): Promise<string> {
   if (!ai) {
-    throw new Error("Gemini client is not initialized. Please set GEMINI_API_KEY or add gcp-key.json.");
+    throw new Error("Gemini client is not initialized. Set GEMINI_PROVIDER/GEMINI_API_KEY or provide Vertex AI credentials.");
   }
 
   const response = await singleCallWithRetry(async () => {
@@ -119,58 +154,72 @@ export async function generateContent(prompt: string, systemInstruction?: string
   return response.text || '';
 }
 
+async function groundedAttempt(
+  prompt: string,
+  systemInstruction?: string
+): Promise<{ text: string; sources: SearchCitation[] }> {
+  const response = await ai!.models.generateContent({
+    model: GEMINI_MODEL,
+    contents: prompt,
+    config: {
+      systemInstruction: systemInstruction || undefined,
+      tools: [{ googleSearch: {} }],
+    },
+  });
+
+  const text = response.text || '';
+  const sources: SearchCitation[] = [];
+  const sourceSet = new Set<string>();
+
+  try {
+    const candidate = response.candidates?.[0] as { groundingMetadata?: GroundingMetadata } | undefined;
+    const groundingMetadata = candidate?.groundingMetadata;
+
+    if (groundingMetadata?.groundingChunks) {
+      for (const chunk of groundingMetadata.groundingChunks) {
+        try {
+          if (chunk.web?.uri) {
+            const url = chunk.web.uri;
+            let title = chunk.web.title || url;
+            try { title = chunk.web.title || new URL(url).hostname; } catch {}
+            if (!sourceSet.has(url)) {
+              sourceSet.add(url);
+              sources.push({ title, url });
+            }
+          }
+        } catch {
+          // Skip malformed chunk
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('Error parsing grounding metadata:', err);
+  }
+
+  return { text, sources };
+}
+
 export async function generateGroundedContent(
   prompt: string, 
   systemInstruction?: string
 ): Promise<{ text: string; sources: SearchCitation[] }> {
   if (!ai) {
-    throw new Error("Gemini client is not initialized. Please set GEMINI_API_KEY or add gcp-key.json.");
+    throw new Error("Gemini client is not initialized. Set GEMINI_PROVIDER/GEMINI_API_KEY or provide Vertex AI credentials.");
   }
 
-  // Try grounded call (1 attempt only — no aggressive retry loop to preserve quota)
-  try {
-    const response = await ai.models.generateContent({
-      model: GEMINI_MODEL,
-      contents: prompt,
-      config: {
-        systemInstruction: systemInstruction || undefined,
-        tools: [{ googleSearch: {} }],
-      },
-    });
-
-    const text = response.text || '';
-    const sources: SearchCitation[] = [];
-    const sourceSet = new Set<string>();
-
+  // Grounded calls (up to 2 attempts — thinking models occasionally return empty text)
+  for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const candidate = response.candidates?.[0];
-      const groundingMetadata = (candidate as any)?.groundingMetadata;
-
-      if (groundingMetadata?.groundingChunks) {
-        for (const chunk of groundingMetadata.groundingChunks) {
-          try {
-            if (chunk.web?.uri) {
-              const url = chunk.web.uri;
-              let title = chunk.web.title || url;
-              try { title = chunk.web.title || new URL(url).hostname; } catch {}
-              if (!sourceSet.has(url)) {
-                sourceSet.add(url);
-                sources.push({ title, url });
-              }
-            }
-          } catch {
-            // Skip malformed chunk
-          }
-        }
+      const result = await groundedAttempt(prompt, systemInstruction);
+      if (result.text.trim().length > 0) {
+        console.log(`[Gemini Grounding] SUCCESS — ${result.sources.length} web sources found.`);
+        return result;
       }
-    } catch (err) {
-      console.warn('Error parsing grounding metadata:', err);
+      console.warn(`[Gemini Grounding] Attempt ${attempt} returned empty text.`);
+    } catch (groundingError: unknown) {
+      console.warn(`[Gemini Grounding] Live Search tool unavailable (${getErrorStatus(groundingError) || getErrorMessage(groundingError)}). Falling back to standard intelligence.`);
+      break;
     }
-
-    console.log(`[Gemini Grounding] SUCCESS — ${sources.length} web sources found.`);
-    return { text, sources };
-  } catch (groundingError: any) {
-    console.warn(`[Gemini Grounding] Live Search tool unavailable (${groundingError?.status || groundingError?.message}). Falling back to standard intelligence.`);
   }
 
   // Fallback: Standard model (with 1 backoff retry)
@@ -189,8 +238,8 @@ export async function generateGroundedContent(
       text: fallbackText,
       sources: []
     };
-  } catch (fallbackError: any) {
-    console.warn(`[Gemini Standard] Fallback hit limit: ${fallbackError?.message}. Using offline fallback.`);
+  } catch (fallbackError: unknown) {
+    console.warn(`[Gemini Standard] Fallback hit limit: ${getErrorMessage(fallbackError)}. Using offline fallback.`);
     return {
       text: '',
       sources: []

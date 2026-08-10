@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
-import { Bot, Sparkles, ArrowRight, Play, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
+import { Bot, Sparkles, Play, CheckCircle2, Zap } from "lucide-react";
 import Link from "next/link";
 
 const PRESET_DEMOS = [
@@ -103,7 +102,7 @@ export default function DemoPage() {
             <Zap className="w-3.5 h-3.5" /> Instant Live Demonstration for Judges
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
-            Test Gemini 3.6 Flash <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#7C3AED]">Autonomy</span>
+            Test Gemini 2.5 Flash <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#7C3AED]">Autonomy</span>
           </h1>
           <p className="text-slate-400 text-base max-w-xl mx-auto">
             Select a preset business scenario or custom brief to witness the 3-agent Gemini pipeline execute live research, strategic cross-referencing, and report synthesis.
@@ -145,7 +144,7 @@ export default function DemoPage() {
           {loading && (
             <div className="absolute inset-0 bg-[#020617]/95 backdrop-blur-md z-30 flex flex-col items-center justify-center p-6 text-center rounded-2xl">
               <div className="w-16 h-16 rounded-full border-4 border-[#00E5FF]/20 border-t-[#00E5FF] animate-spin mb-6" />
-              <h3 className="text-xl font-bold mb-2 text-white">Gemini 3.6 Flash Pipeline Active</h3>
+              <h3 className="text-xl font-bold mb-2 text-white">Gemini 2.5 Flash Pipeline Active</h3>
               <p className="text-slate-400 text-sm max-w-md animate-pulse">
                 Investigator → Analyst → Writer executing live. Redirecting to real-time agent telemetry console...
               </p>

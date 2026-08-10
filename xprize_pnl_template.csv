@@ -1,16 +1,1 @@
 Month,Category,Description,Revenue (USD),Expenses (USD),Net Profit (USD)
-May 2026,Revenue,Arm's-length customer orders (Pre-launch period),0.00,0.00,0.00
-May 2026,Expenses,Domain registration & initial setup,0.00,12.00,-12.00
-Jun 2026,Revenue,Arm's-length customer orders (Beta testing),0.00,0.00,0.00
-Jun 2026,Expenses,Google Cloud Run & Gemini API testing,0.00,8.50,-8.50
-Jul 2026,Revenue,Arm's-length customer orders (Early access),0.00,0.00,0.00
-Jul 2026,Expenses,Google Cloud hosting & development,0.00,14.20,-14.20
-Aug 2026,Revenue,Stripe Customer Order #1042 (Professional Brief),99.00,0.00,99.00
-Aug 2026,Revenue,Stripe Customer Order #1043 (Starter Brief),49.00,0.00,49.00
-Aug 2026,Revenue,Stripe Customer Order #1044 (Enterprise Suite),149.00,0.00,149.00
-Aug 2026,Revenue,Stripe Customer Order #1045 (Professional Brief),99.00,0.00,99.00
-Aug 2026,Expenses,Google Cloud Run production serverless hosting,0.00,18.40,-18.40
-Aug 2026,Expenses,Google Gemini 3.6 Flash API token usage,0.00,12.60,-12.60
-Aug 2026,Expenses,Stripe payment processing fees (2.9% + $0.30 per tx),0.00,12.68,-12.68
-Aug 2026,Expenses,Customer acquisition & organic marketing spend,0.00,0.00,0.00
-TOTAL,ALL,Project Lifetime Totals,396.00,78.38,317.62

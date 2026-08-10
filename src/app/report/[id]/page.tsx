@@ -10,12 +10,10 @@ import {
   Clock, 
   FileText, 
   Download, 
-  Share2, 
   ArrowLeft,
   Sparkles,
   Zap,
   Activity,
-  AlertTriangle,
   Copy,
   Check,
   ExternalLink,
@@ -33,7 +31,6 @@ export default function ReportPage() {
   const [report, setReport] = useState<Report | null>(null);
   const [logs, setLogs] = useState<AgentLogEntry[]>([]);
   const [copied, setCopied] = useState(false);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -55,12 +52,10 @@ export default function ReportPage() {
           } else if (data.logs) {
             setLogs(data.logs);
           }
-          setLoading(false);
         }
-      } catch (err: any) {
+      } catch (err: unknown) {
         if (isMounted) {
-          setError(err.message || "Failed to load report");
-          setLoading(false);
+          setError(err instanceof Error ? err.message : "Failed to load report");
         }
       }
     }
@@ -218,12 +213,19 @@ export default function ReportPage() {
                   <div className="w-12 h-12 rounded-2xl bg-[#00E5FF]/10 border border-[#00E5FF]/30 flex items-center justify-center text-[#00E5FF] animate-pulse">
                     <Sparkles className="w-6 h-6" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-1">AI Agents Operating in Production</h3>
-                    <p className="text-slate-400 text-sm max-w-md">
-                      Gemini 3.6 Flash Investigator and Analyst agents are currently executing strategic synthesis. The final report will stream here automatically.
-                    </p>
-                  </div>
+                  {error ? (
+                    <div>
+                      <h3 className="text-xl font-bold mb-1 text-red-400">Failed to load report</h3>
+                      <p className="text-slate-400 text-sm max-w-md">{error}</p>
+                    </div>
+                  ) : (
+                    <div>
+                      <h3 className="text-xl font-bold mb-1">AI Agents Operating in Production</h3>
+                      <p className="text-slate-400 text-sm max-w-md">
+                        Gemini 2.5 Flash Investigator and Analyst agents are currently executing strategic synthesis. The final report will stream here automatically.
+                      </p>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="prose prose-invert max-w-none space-y-6">

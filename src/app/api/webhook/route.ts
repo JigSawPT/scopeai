@@ -19,22 +19,22 @@ export async function POST(request: Request) {
     } else {
       event = JSON.parse(body);
     }
-  } catch (err: any) {
-    console.error('Webhook signature verification failed:', err.message);
+  } catch (err: unknown) {
+    console.error('Webhook signature verification failed:', err instanceof Error ? err.message : String(err));
     return NextResponse.json({ error: 'Webhook Error' }, { status: 400 });
   }
 
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as any;
+    const session = event.data.object as { metadata?: { order_id?: string } };
     const orderId = session.metadata?.order_id;
 
     if (orderId) {
-      const order = getOrder(orderId);
+      const order = await getOrder(orderId);
       if (order) {
         order.status = 'processing';
-        saveOrder(order);
+        await saveOrder(order);
 
-        // Asynchronously trigger the Gemini 3.6 Flash agent pipeline
+        // Asynchronously trigger the Gemini agent pipeline
         runAgentPipeline(order).catch((err) => {
           console.error(`Error running agent pipeline for order ${orderId}:`, err);
         });

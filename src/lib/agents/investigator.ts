@@ -1,5 +1,15 @@
-import { generateGroundedContent, extractJSON } from '../gemini';
+import { generateGroundedContent, extractJSON, getErrorMessage } from '../gemini';
 import { CompetitorData, AgentLogEntry, OrderRequest } from './types';
+
+interface RawCompetitor {
+  name?: string;
+  website?: string;
+  pricing?: string;
+  strengths?: string[];
+  weaknesses?: string[];
+  reviews_summary?: string;
+  market_position?: string;
+}
 
 export async function runInvestigator(order: OrderRequest): Promise<{ data: CompetitorData[], logs: AgentLogEntry[] }> {
   const logs: AgentLogEntry[] = [];
@@ -55,23 +65,23 @@ Search for:
     
     addLog('Parsing Web Data', `Received grounded search response with ${sources.length} verified web sources.`);
 
-    // Fallback template if parsing fails completely
+    // Degraded template used only if the model returns nothing parseable (never claims verification)
     const fallbackCompetitors: CompetitorData[] = order.competitors.map(c => ({
       name: c,
       website: `https://${c.toLowerCase().replace(/[^a-z0-9]/g, '')}.com`,
-      pricing: "Verified live market pricing tier",
-      strengths: ["Established market presence", "Proven feature set"],
-      weaknesses: ["Higher price point", "Complex setup"],
-      reviews_summary: "Strong overall ratings with some user feedback on setup complexity.",
-      market_position: "Established Industry Player",
+      pricing: "Unavailable — model returned no data",
+      strengths: ["Unavailable — model returned no data"],
+      weaknesses: ["Unavailable — model returned no data"],
+      reviews_summary: "Unavailable — model returned no data.",
+      market_position: "Unanalyzed (degraded mode)",
       sources: sources
     }));
 
-    const rawData = extractJSON<any[]>(text, fallbackCompetitors);
+    const rawData = extractJSON<RawCompetitor[]>(text, fallbackCompetitors);
     const rawArray = Array.isArray(rawData) ? rawData : fallbackCompetitors;
 
     // Attach verified web search sources to competitors
-    const data: CompetitorData[] = rawArray.map((item: any) => ({
+    const data: CompetitorData[] = rawArray.map((item: RawCompetitor) => ({
       name: item.name || 'Competitor',
       website: item.website || '',
       pricing: item.pricing || 'Pricing info from live search',
@@ -86,8 +96,8 @@ Search for:
     logs[logs.length - 1].durationMs = durationMs;
 
     return { data, logs };
-  } catch (error: any) {
-    addLog('Error', `Investigator failed: ${error.message}`, 'error');
+  } catch (error: unknown) {
+    addLog('Error', `Investigator failed: ${getErrorMessage(error)}`, 'error');
     throw error;
   }
 }

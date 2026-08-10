@@ -17,7 +17,7 @@
 
 ### [1:00 - 2:00] Live Agent Telemetry & Autonomous Execution
 * **Visual:** Transition to `https://scopeai.app/report/[id]`. Zoom in on the live streaming Agent Execution Console showing real-time timestamps and status badges.
-* **Highlight 1 (1:05 - 1:20):** "Watch the **Investigator Agent** query Gemini 3.6 Flash to extract competitor pricing models, feature gaps, and negative customer sentiment from public reviews."
+* **Highlight 1 (1:05 - 1:20):** "Watch the **Investigator Agent** query Gemini 2.5 Flash with Google Search grounding to extract competitor pricing models, feature gaps, and negative customer sentiment from public reviews."
 * **Highlight 2 (1:20 - 1:40):** "Next, the **Analyst Agent** takes over, cross-referencing market positioning and synthesizing strategic SWOT matrices and unaddressed market opportunities."
 * **Highlight 3 (1:40 - 2:00):** "Finally, the **Writer Agent** drafts an executive-level Markdown briefing report and emails it directly to the client."
 
@@ -26,5 +26,5 @@
 * **Audio:** "Here is the final deliverable. High-grade strategic intelligence produced in under 30 seconds at over 90% gross margin, running on Google Cloud Run with complete telemetry observability."
 
 ### [2:30 - 2:50] Conclusion & XPRIZE Vision
-* **Visual:** ScopeAI logo with "Powered by Gemini 3.6 Flash | Built for Build with Gemini XPRIZE".
+* **Visual:** ScopeAI logo with "Powered by Gemini 2.5 Flash on Vertex AI | Built for Build with Gemini XPRIZE".
 * **Audio:** "ScopeAI proves that small teams powered by Gemini agents can deliver operations that used to take entire departments. Thank you."

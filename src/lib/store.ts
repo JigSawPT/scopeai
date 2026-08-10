@@ -8,66 +8,68 @@ import {
   getLogsFromDB 
 } from './db';
 
-const globalAny = global as any;
+const globalAny = global as typeof globalThis & {
+  ordersStore?: Map<string, OrderRequest>;
+  reportsStore?: Map<string, Report>;
+  logsStore?: Map<string, AgentLogEntry[]>;
+};
 
-if (!globalAny.ordersStore) {
-  globalAny.ordersStore = new Map<string, OrderRequest>();
-}
-if (!globalAny.reportsStore) {
-  globalAny.reportsStore = new Map<string, Report>();
-}
-if (!globalAny.logsStore) {
-  globalAny.logsStore = new Map<string, AgentLogEntry[]>();
-}
+globalAny.ordersStore ??= new Map<string, OrderRequest>();
+globalAny.reportsStore ??= new Map<string, Report>();
+globalAny.logsStore ??= new Map<string, AgentLogEntry[]>();
 
-export function saveOrder(order: OrderRequest) {
-  globalAny.ordersStore.set(order.id, order);
+const ordersStore = globalAny.ordersStore;
+const reportsStore = globalAny.reportsStore;
+const logsStore = globalAny.logsStore;
+
+export async function saveOrder(order: OrderRequest) {
+  ordersStore.set(order.id, order);
   try {
-    saveOrderToDB(order);
+    await saveOrderToDB(order);
   } catch (err) {
     console.error('DB save order error:', err);
   }
 }
 
-export function getOrder(id: string): OrderRequest | undefined {
-  return globalAny.ordersStore.get(id) || getOrderFromDB(id);
+export async function getOrder(id: string): Promise<OrderRequest | undefined> {
+  return ordersStore.get(id) || getOrderFromDB(id);
 }
 
-export function updateOrderStatus(id: string, status: OrderRequest['status']) {
-  const order = getOrder(id);
+export async function updateOrderStatus(id: string, status: OrderRequest['status']) {
+  const order = await getOrder(id);
   if (order) {
     order.status = status;
-    saveOrder(order);
+    await saveOrder(order);
   }
 }
 
-export function saveReport(report: Report) {
-  globalAny.reportsStore.set(report.id, report);
-  globalAny.reportsStore.set(report.order_id, report);
+export async function saveReport(report: Report) {
+  reportsStore.set(report.id, report);
+  reportsStore.set(report.order_id, report);
   try {
-    saveReportToDB(report);
+    await saveReportToDB(report);
   } catch (err) {
     console.error('DB save report error:', err);
   }
 }
 
-export function getReport(id: string): Report | undefined {
-  return globalAny.reportsStore.get(id) || getReportFromDB(id);
+export async function getReport(id: string): Promise<Report | undefined> {
+  return reportsStore.get(id) || getReportFromDB(id);
 }
 
-export function storeLogs(orderId: string, logs: AgentLogEntry[]) {
-  const existing = globalAny.logsStore.get(orderId) || [];
+export async function storeLogs(orderId: string, logs: AgentLogEntry[]) {
+  const existing = logsStore.get(orderId) || [];
   const updated = [...existing, ...logs];
-  globalAny.logsStore.set(orderId, updated);
+  logsStore.set(orderId, updated);
   try {
-    logs.forEach(l => addLogToDB(orderId, l));
+    await Promise.all(logs.map(l => addLogToDB(orderId, l)));
   } catch (err) {
     console.error('DB save log error:', err);
   }
 }
 
-export function getLogs(orderId: string): AgentLogEntry[] {
-  const memoryLogs = globalAny.logsStore.get(orderId) || [];
+export async function getLogs(orderId: string): Promise<AgentLogEntry[]> {
+  const memoryLogs = logsStore.get(orderId) || [];
   if (memoryLogs.length > 0) return memoryLogs;
   return getLogsFromDB(orderId);
 }

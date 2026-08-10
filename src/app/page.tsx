@@ -11,9 +11,7 @@ import {
   FileText, 
   Search, 
   Zap, 
-  ShieldCheck, 
-  Mail, 
-  Star
+  Mail
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -107,7 +105,7 @@ export default function Home() {
               className="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-sm text-slate-500 font-medium"
             >
               <div className="flex items-center gap-2">
-                <Brain className="w-5 h-5 text-[#7C3AED]" /> Powered by Gemini 3.6 Flash
+                <Brain className="w-5 h-5 text-[#7C3AED]" /> Powered by Gemini 2.5 Flash
               </div>
               <div className="flex items-center gap-2">
                 <Bot className="w-5 h-5 text-[#00E5FF]" /> 100% AI-Native
@@ -181,7 +179,7 @@ export default function Home() {
               >
                 <h2 className="text-3xl md:text-5xl font-bold mb-6">Watch Them Work in Real-Time</h2>
                 <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                  Our system doesn't just return a static document. You get a live terminal view of our Gemini 3.6 agents as they scour the web, analyze data, and build your report from the ground up.
+                  Our system doesn&apos;t just return a static document. You get a live terminal view of our Gemini 2.5 agents as they scour the web, analyze data, and build your report from the ground up.
                 </p>
                 <ul className="space-y-4 mb-8">
                   {[
@@ -218,7 +216,7 @@ export default function Home() {
                   {/* Terminal Body */}
                   <div className="p-6 bg-[#0a0f1e] h-[400px] overflow-hidden relative flex flex-col gap-2 text-slate-300">
                     <TerminalLine delay={0} color="text-cyan-400" tag="SYSTEM" text="Initializing ScopeAI Agency Swarm..." />
-                    <TerminalLine delay={1} color="text-cyan-400" tag="SYSTEM" text="Deploying Gemini 3.6 Flash models (n=3)..." />
+                    <TerminalLine delay={1} color="text-cyan-400" tag="SYSTEM" text="Deploying Gemini 2.5 Flash models (n=3)..." />
                     <TerminalLine delay={2} color="text-purple-400" tag="INVESTIGATOR" text="Scanning competitor pricing pages [Acme Corp, Globex]..." />
                     <TerminalLine delay={3.5} color="text-purple-400" tag="INVESTIGATOR" text="Analyzing 47 customer reviews on G2 for Acme Corp..." />
                     <TerminalLine delay={5} color="text-green-400" tag="ANALYST" text="Cross-referencing market positioning data..." />
@@ -324,26 +322,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials */}
+        {/* Example Use Cases (illustrative scenarios — not customer testimonials) */}
         <section className="py-24 bg-black/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-bold mb-16 text-center">Trusted by Builders</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center">Example Use Cases</h2>
+            <p className="text-slate-500 text-sm text-center mb-16">Illustrative scenarios showing how teams apply ScopeAI reports.</p>
             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
-                  quote: "ScopeAI saved us weeks of research. The agents identified a pricing gap in our top two competitors that we exploited the very next week.",
-                  author: "Sarah J.",
-                  role: "SaaS Founder"
+                  quote: "A SaaS founder commissions a Professional Brief on her two closest competitors. The report surfaces a pricing gap in their top tiers that she exploits the very next week.",
+                  label: "Pricing gap discovery",
+                  role: "Starter / Professional Brief"
                 },
                 {
-                  quote: "I was skeptical about AI agents doing this, but the depth of the 25-page report blew my mind. It read like a top-tier consulting firm wrote it.",
-                  author: "Michael T.",
-                  role: "E-commerce Director"
+                  quote: "An e-commerce director orders a deep-dive before quarterly planning. The competitor benchmarking table becomes the briefing document for the whole leadership team.",
+                  label: "Executive briefing",
+                  role: "Professional Brief"
                 },
                 {
-                  quote: "The live terminal is so cool to watch, but the actual PDF report is the real value. Incredible ROI for $99. We use it quarterly now.",
-                  author: "Elena R.",
-                  role: "Marketing Head"
+                  quote: "A marketing head keeps an Enterprise Suite running so agents re-evaluate competitors every quarter and flag significant changes in strategy or pricing.",
+                  label: "Quarterly monitoring",
+                  role: "Enterprise Suite"
                 }
               ].map((t, i) => (
                 <motion.div 
@@ -354,18 +353,11 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                   className="glass-card p-8 rounded-2xl"
                 >
-                  <div className="flex gap-1 mb-4 text-[#00E5FF]">
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
-                    <Star className="w-4 h-4 fill-current" />
+                  <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-[#00E5FF]/20 bg-[#00E5FF]/5 text-[#00E5FF] text-xs font-medium mb-4">
+                    <Search className="w-3 h-3" /> {t.label}
                   </div>
-                  <p className="text-slate-300 mb-6 italic leading-relaxed">"{t.quote}"</p>
-                  <div>
-                    <div className="font-bold text-white">{t.author}</div>
-                    <div className="text-sm text-slate-500">{t.role}</div>
-                  </div>
+                  <p className="text-slate-300 mb-6 leading-relaxed">{t.quote}</p>
+                  <div className="text-sm text-slate-500">{t.role}</div>
                 </motion.div>
               ))}
             </div>
@@ -379,7 +371,7 @@ export default function Home() {
             <div className="space-y-4">
               <FaqItem 
                 q="How are the reports generated?" 
-                a="We use a swarm of specialized AI agents powered by Gemini 3.6 Flash. They autonomously search the web, analyze pricing, read customer reviews, and synthesize the data into a professional PDF report. No humans are involved." 
+                a="We use a swarm of specialized AI agents powered by Gemini 2.5 Flash on Google Cloud's Vertex AI. They autonomously search the web, analyze pricing, read customer reviews, and synthesize the data into a professional report. No humans are involved." 
               />
               <FaqItem 
                 q="Is my data kept confidential?" 
@@ -409,7 +401,7 @@ export default function Home() {
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Stop guessing. Start knowing.</h2>
               <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                Join hundreds of businesses using AI agents to uncover their competitors' weaknesses.
+                Start using AI agents to uncover your competitors&apos; weaknesses.
               </p>
               
               <form 

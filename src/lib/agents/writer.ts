@@ -1,4 +1,4 @@
-import { generateContent } from '../gemini';
+import { generateContent, getErrorMessage } from '../gemini';
 import { AnalysisResult, AgentLogEntry, OrderRequest } from './types';
 
 export async function runWriter(
@@ -59,8 +59,8 @@ Required Report Structure:
     let result = '';
     try {
       result = await generateContent(prompt, systemInstruction);
-    } catch (e: any) {
-      console.warn('Writer LLM call hit quota, generating structured fallback report:', e.message);
+    } catch (e: unknown) {
+      console.warn('Writer LLM call hit quota, generating structured fallback report:', getErrorMessage(e));
     }
     const durationMs = Date.now() - startTime;
 
@@ -72,8 +72,8 @@ Required Report Structure:
     logs[logs.length - 1].durationMs = durationMs;
 
     return { data: result, logs };
-  } catch (error: any) {
-    addLog('Error', `Writer fallback activated: ${error.message}`, 'completed');
+  } catch (error: unknown) {
+    addLog('Error', `Writer fallback activated: ${getErrorMessage(error)}`, 'completed');
     return { data: generateFallbackMarkdown(order, analysis), logs };
   }
 }
@@ -163,6 +163,6 @@ ${(analysis.recommendations || [
 
 ## 7. Verified Web Sources & Citations
 
-${sourcesList || '- [Google Market Search](https://google.com)'}
+${sourcesList || '- No verified web sources available (offline fallback mode).'}
 `;
 }

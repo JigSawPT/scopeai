@@ -1,82 +1,58 @@
-import fs from 'fs';
-import path from 'path';
+import { Firestore, FieldValue } from '@google-cloud/firestore';
 import { OrderRequest, Report, AgentLogEntry } from '@/lib/agents/types';
 
-const DATA_DIR = path.join(process.cwd(), 'data');
-const DB_FILE = path.join(DATA_DIR, 'db.json');
+let firestore: Firestore | null = null;
 
-interface DatabaseSchema {
-  orders: Record<string, OrderRequest>;
-  reports: Record<string, Report>;
-  logs: Record<string, AgentLogEntry[]>;
-}
-
-function ensureDataDir() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+function getDb(): Firestore {
+  if (!firestore) {
+    firestore = new Firestore({
+      projectId: process.env.GCP_PROJECT_ID,
+    });
   }
+  return firestore;
 }
 
-function loadDB(): DatabaseSchema {
-  try {
-    ensureDataDir();
-    if (fs.existsSync(DB_FILE)) {
-      const data = fs.readFileSync(DB_FILE, 'utf8');
-      return JSON.parse(data);
-    }
-  } catch (error) {
-    console.error('Error reading db.json:', error);
-  }
-  return { orders: {}, reports: {}, logs: {} };
+function clean<T>(obj: T): T {
+  return JSON.parse(JSON.stringify(obj));
 }
 
-function saveDB(db: DatabaseSchema) {
-  try {
-    ensureDataDir();
-    fs.writeFileSync(DB_FILE, JSON.stringify(db, null, 2), 'utf8');
-  } catch (error) {
-    console.error('Error writing db.json:', error);
-  }
+export async function saveOrderToDB(order: OrderRequest): Promise<void> {
+  await getDb().collection('orders').doc(order.id).set(clean(order));
 }
 
-export function saveOrderToDB(order: OrderRequest) {
-  const db = loadDB();
-  db.orders[order.id] = order;
-  saveDB(db);
+export async function getOrderFromDB(id: string): Promise<OrderRequest | undefined> {
+  const doc = await getDb().collection('orders').doc(id).get();
+  return doc.exists ? (doc.data() as OrderRequest) : undefined;
 }
 
-export function getOrderFromDB(id: string): OrderRequest | undefined {
-  const db = loadDB();
-  return db.orders[id];
+export async function getAllOrdersFromDB(): Promise<OrderRequest[]> {
+  const snapshot = await getDb().collection('orders').get();
+  return snapshot.docs.map(d => d.data() as OrderRequest);
 }
 
-export function getAllOrdersFromDB(): OrderRequest[] {
-  const db = loadDB();
-  return Object.values(db.orders);
+export async function saveReportToDB(report: Report): Promise<void> {
+  const data = clean(report);
+  const batch = getDb().batch();
+  batch.set(getDb().collection('reports').doc(report.id), data);
+  batch.set(getDb().collection('reports').doc(report.order_id), data);
+  await batch.commit();
 }
 
-export function saveReportToDB(report: Report) {
-  const db = loadDB();
-  db.reports[report.id] = report;
-  db.reports[report.order_id] = report; // Index by order_id as well
-  saveDB(db);
+export async function getReportFromDB(id: string): Promise<Report | undefined> {
+  const doc = await getDb().collection('reports').doc(id).get();
+  return doc.exists ? (doc.data() as Report) : undefined;
 }
 
-export function getReportFromDB(id: string): Report | undefined {
-  const db = loadDB();
-  return db.reports[id];
+export async function addLogToDB(orderId: string, log: AgentLogEntry): Promise<void> {
+  await getDb().collection('logs').doc(orderId).set(
+    { logs: FieldValue.arrayUnion(clean(log)) },
+    { merge: true }
+  );
 }
 
-export function addLogToDB(orderId: string, log: AgentLogEntry) {
-  const db = loadDB();
-  if (!db.logs[orderId]) {
-    db.logs[orderId] = [];
-  }
-  db.logs[orderId].push(log);
-  saveDB(db);
-}
-
-export function getLogsFromDB(orderId: string): AgentLogEntry[] {
-  const db = loadDB();
-  return db.logs[orderId] || [];
+export async function getLogsFromDB(orderId: string): Promise<AgentLogEntry[]> {
+  const doc = await getDb().collection('logs').doc(orderId).get();
+  if (!doc.exists) return [];
+  const data = doc.data();
+  return Array.isArray(data?.logs) ? (data!.logs as AgentLogEntry[]) : [];
 }

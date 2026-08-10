@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { runAgentPipeline } from '@/lib/agents/orchestrator';
 import { OrderRequest } from '@/lib/agents/types';
 import { saveOrder } from '@/lib/store';
+import { getErrorMessage } from '@/lib/gemini';
 
 export async function POST(request: Request) {
   try {
@@ -13,22 +14,21 @@ export async function POST(request: Request) {
       business_description: body.business_description || '',
       industry: body.industry || 'General',
       target_market: body.target_market || 'General',
-      competitors: body.competitors || [],
+      competitors: Array.isArray(body.competitors) ? body.competitors : [],
       specific_questions: body.specific_questions,
       tier: body.tier || 'starter',
       customer_email: body.customer_email || 'test@example.com',
       status: 'pending',
       created_at: new Date().toISOString(),
-      ...body
     };
 
-    saveOrder(order);
+    await saveOrder(order);
 
     const report = await runAgentPipeline(order);
 
     return NextResponse.json(report);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('API Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: getErrorMessage(error) }, { status: 500 });
   }
 }
