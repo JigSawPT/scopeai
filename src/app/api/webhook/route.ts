@@ -31,6 +31,9 @@ export async function POST(request: Request) {
     if (orderId) {
       const order = await getOrder(orderId);
       if (order) {
+        if (order.status !== 'pending') {
+          return NextResponse.json({ received: true, duplicate: true });
+        }
         order.status = 'processing';
         await saveOrder(order);
 

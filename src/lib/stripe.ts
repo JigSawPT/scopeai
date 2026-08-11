@@ -8,16 +8,16 @@ export const TIER_PRICES = {
   starter: {
     amount: 4900, // $49.00 USD
     name: 'ScopeAI Starter Brief',
-    description: 'Single competitor deep-dive report, 10-page analysis, 24h delivery.',
+    description: 'One-competitor competitive intelligence brief with live web sources.',
   },
   professional: {
     amount: 9900, // $99.00 USD
     name: 'ScopeAI Professional Brief',
-    description: '3 competitor analysis, 25-page report, market positioning map.',
+    description: 'Three-competitor competitive intelligence brief with strategic recommendations.',
   },
   enterprise: {
     amount: 14900, // $149.00 USD
     name: 'ScopeAI Enterprise Suite',
-    description: '5+ competitor deep-dive, 40-page report, priority 24h delivery.',
+    description: 'Up to five-competitor competitive intelligence brief with strategic recommendations.',
   },
 };

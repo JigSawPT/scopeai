@@ -1,0 +1,62 @@
+[
+  {
+    "target": "Chris Walker",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  },
+  {
+    "target": "Mostafa ElBermawy",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  },
+  {
+    "target": "Ashley Levesque",
+    "status": "skipped",
+    "reason": "company \"Tuff\" not in profile"
+  },
+  {
+    "target": "Theo Moulos",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  },
+  {
+    "target": "William Craig",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  },
+  {
+    "target": "Paul Copplestone",
+    "status": "skipped",
+    "reason": "compose editor did not render"
+  },
+  {
+    "target": "Jack Ellis",
+    "status": "skipped",
+    "reason": "company \"Fathom\" not in profile"
+  },
+  {
+    "target": "Patrick Woods",
+    "status": "skipped",
+    "reason": "compose editor did not render"
+  },
+  {
+    "target": "Vladimir Vukicevic",
+    "status": "skipped",
+    "reason": "company \"Tella\" not in profile"
+  },
+  {
+    "target": "Thomas Mann",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  },
+  {
+    "target": "Hahnbee Lee",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  },
+  {
+    "target": "Nikita Shamgunov",
+    "status": "skipped",
+    "reason": "name mismatch (found \"Esta página não existe\")"
+  }
+]

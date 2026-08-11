@@ -36,13 +36,28 @@ export default function ReportPage() {
   useEffect(() => {
     if (!reportId) return;
 
+    const storageKey = `scopeai-report-access:${reportId}`;
+    const url = new URL(window.location.href);
+    const accessToken = url.searchParams.get("access") || window.sessionStorage.getItem(storageKey);
+
+    const reportAccessToken = accessToken;
+
+    if (reportAccessToken) {
+      window.sessionStorage.setItem(storageKey, reportAccessToken);
+      if (url.searchParams.has("access")) {
+        url.searchParams.delete("access");
+        window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    }
+
     let isMounted = true;
 
     async function fetchReport() {
       try {
-        const res = await fetch(`/api/logs?id=${reportId}`);
+        const res = await fetch(`/api/logs?id=${reportId}&access=${encodeURIComponent(reportAccessToken || "")}`);
         if (!res.ok) {
-          throw new Error("Report not found");
+          const errorData = await res.json().catch(() => ({}));
+          throw new Error(errorData.error || "Report not found");
         }
         const data = await res.json();
         if (isMounted) {

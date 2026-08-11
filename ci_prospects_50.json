@@ -1,0 +1,522 @@
+[
+  {
+    "category": "Marketing Agencies Serving SaaS/Tech Clients",
+    "prospects": [
+      {
+        "company": "Single Grain",
+        "website": "https://www.singlegrain.com",
+        "industry": "Digital Marketing Agency",
+        "competitors": ["NP Digital", "WebFX", "Ignite Visibility"],
+        "decisionMaker": "Eric Siu",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/ericsiu/",
+        "whyNeeded": "Single Grain specializes in SaaS and tech clients. CI reports on competitors' content strategies, ad spend, and SEO positioning would directly enhance their client pitches and retention. They need to stay ahead of what competing agencies offer."
+      },
+      {
+        "company": "RevenueZen",
+        "website": "https://www.revenuezen.com",
+        "industry": "B2B SaaS Marketing Agency",
+        "competitors": ["Kalungi", "Hey Digital", "Single Grain"],
+        "decisionMaker": "Alex Birkett",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/alexbirkett/",
+        "whyNeeded": "Focuses exclusively on B2B SaaS growth through SEO and content. CI on competitor keyword strategies and content gaps would be a core deliverable they could resell to clients."
+      },
+      {
+        "company": "Kalungi",
+        "website": "https://www.kalungi.com",
+        "industry": "SaaS Marketing Agency",
+        "competitors": ["RevenueZen", "Hey Digital", "HuBuCo"],
+        "decisionMaker": "Stijn Hendrikse",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/stijnhendrikse/",
+        "whyNeeded": "Offers fractional CMO services for B2B SaaS. CI reports would help them build go-to-market strategies with competitive positioning for their portfolio clients."
+      },
+      {
+        "company": "Hey Digital",
+        "website": "https://www.heydigital.co",
+        "industry": "SaaS PPC Agency",
+        "competitors": ["Kalungi", "KlientBoost", "Single Grain"],
+        "decisionMaker": "Pete Hurrey",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/petehurrey/",
+        "whyNeeded": "Runs paid ads for SaaS companies. CI on competitors' ad copy, landing pages, and spend would let them build better-performing campaigns for clients."
+      },
+      {
+        "company": "KlientBoost",
+        "website": "https://www.klientboost.com",
+        "industry": "Performance Marketing Agency",
+        "competitors": ["Single Grain", "Hey Digital", "WebFX"],
+        "decisionMaker": "Johnathan Dane",
+        "decisionMakerRole": "Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/jonathandane/",
+        "whyNeeded": "Specializes in conversion rate optimization and PPC for SaaS. CI on competitor landing pages, A/B tests, and conversion strategies would be highly valuable."
+      },
+      {
+        "company": "Foundation Marketing",
+        "website": "https://www.foundationinc.co",
+        "industry": "Content Marketing Agency",
+        "competitors": ["Animalz", "Grow & Convert", "SEOmatic"],
+        "decisionMaker": "Ross Simmonds",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/rosssimmonds/",
+        "whyNeeded": "Content strategy for B2B SaaS brands. CI reports on competitor content performance, distribution strategies, and topic gaps would enhance every client engagement."
+      },
+      {
+        "company": "Animalz",
+        "website": "https://www.animalz.co",
+        "industry": "Content Marketing Agency",
+        "competitors": ["Foundation Marketing", "Grow & Convert", "Codeless"],
+        "decisionMaker": "Ryan Law",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/ryanlaw/",
+        "whyNeeded": "Creates long-form content for SaaS companies. CI on what competitors publish, their content velocity, and backlink profiles would strengthen their content briefs."
+      },
+      {
+        "company": "NoGood",
+        "website": "https://www.nogood.io",
+        "industry": "Growth Marketing Agency",
+        "competitors": ["Single Grain", "KlientBoost", "Tuff Growth"],
+        "decisionMaker": "Mostafa ElBermawy",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/mostafaelbermawy/",
+        "whyNeeded": "Growth-focused agency for startups. CI on competitor growth channels and acquisition strategies would directly inform their growth playbooks."
+      },
+      {
+        "company": "Tuff Growth",
+        "website": "https://www.tuffgrowth.com",
+        "industry": "Growth Marketing Agency",
+        "competitors": ["NoGood", "Single Grain", "GrowthRocks"],
+        "decisionMaker": "Ashley Levesque",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/ashleylevesque/",
+        "whyNeeded": "Works with startups on full-funnel growth. CI reports help them identify which acquisition channels competitors are winning on."
+      },
+      {
+        "company": "GrowthRocks",
+        "website": "https://www.growthrocks.com",
+        "industry": "Growth Hacking Agency",
+        "competitors": ["Tuff Growth", "NoGood", "Growth Hackers"],
+        "decisionMaker": "Theo Moulos",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/theomoulos/",
+        "whyNeeded": "Growth hacking for tech startups. CI on competitor experiments, viral loops, and referral programs would fuel their growth strategies."
+      },
+      {
+        "company": "WebFX",
+        "website": "https://www.webfx.com",
+        "industry": "Digital Marketing Agency",
+        "competitors": ["NP Digital", "Ignite Visibility", "Thrive Agency"],
+        "decisionMaker": "William Craig",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/williamcraig/",
+        "whyNeeded": "Full-service digital agency. CI reports can be packaged as add-on services for their 500+ clients in competitive industries."
+      },
+      {
+        "company": "NP Digital",
+        "website": "https://www.npdigital.com",
+        "industry": "Digital Marketing Agency",
+        "competitors": ["WebFX", "Single Grain", "Ignite Visibility"],
+        "decisionMaker": "Neil Patel",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/neilkpatel/",
+        "whyNeeded": "Massive agency with tech clients. CI on competitors' SEO and paid strategies would complement their existing analytics tools."
+      },
+      {
+        "company": "Sculpt",
+        "website": "https://www.sculpt.co",
+        "industry": "B2B Social Media Agency",
+        "competitors": ["Single Grain", "Foundation Marketing", "Column Five"],
+        "decisionMaker": "Josh Hmmer",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/joshhmmr/",
+        "whyNeeded": "Social media for B2B SaaS. CI on competitor social strategies, engagement rates, and content formats would improve their client campaigns."
+      },
+      {
+        "company": "Omniscient Digital",
+        "website": "https://www.omniscientdigital.com",
+        "industry": "SEO & Content Agency",
+        "competitors": ["Animalz", "RevenueZen", "Foundation Marketing"],
+        "decisionMaker": "Allie Decker",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/alliedecker/",
+        "whyNeeded": "SEO-driven content for B2B SaaS. CI on competitor keyword gaps and content strategies is their bread and butter for client pitches."
+      },
+      {
+        "company": "Directive Consulting",
+        "website": "https://www.directiveconsulting.com",
+        "industry": "B2B SaaS Marketing Agency",
+        "competitors": ["Single Grain", "Kalungi", "Hey Digital"],
+        "decisionMaker": "Garrett Mehrguth",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/garrettmehrguth/",
+        "whyNeeded": "Performance marketing for enterprise SaaS. CI on competitor positioning and messaging helps them differentiate client campaigns."
+      }
+    ]
+  },
+  {
+    "category": "SaaS Startups in Crowded Markets",
+    "prospects": [
+      {
+        "company": "folk CRM",
+        "website": "https://www.folk.app",
+        "industry": "CRM Software",
+        "competitors": ["Attio", "Clay", "HubSpot"],
+        "decisionMaker": "Simo Lemhandez",
+        "decisionMakerRole": "Co-Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/simolemhandez/",
+        "whyNeeded": "Competing in the crowded CRM space against HubSpot and Attio. Needs CI on feature gaps, pricing moves, and GTM strategies of competitors."
+      },
+      {
+        "company": "Attio",
+        "website": "https://www.attio.com",
+        "industry": "CRM Software",
+        "competitors": ["folk", "HubSpot", "Salesforce"],
+        "decisionMaker": "Nicolas Sharp",
+        "decisionMakerRole": "Co-Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/nicolas-sharp/",
+        "whyNeeded": "Building a next-gen CRM. CI on Salesforce and HubSpot feature releases, pricing changes, and enterprise sales tactics would be critical."
+      },
+      {
+        "company": "Twenty CRM",
+        "website": "https://www.twenty.com",
+        "industry": "Open-Source CRM",
+        "competitors": ["Attio", "folk", "HubSpot"],
+        "decisionMaker": "Felix Malfait",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/felixmalfait/",
+        "whyNeeded": "Open-source CRM competing against proprietary players. CI on competitor lock-in strategies and migration pain points helps positioning."
+      },
+      {
+        "company": "Dub",
+        "website": "https://www.dub.co",
+        "industry": "Link Management SaaS",
+        "competitors": ["Bitly", "Short.io", "Rebrandly"],
+        "decisionMaker": "Steven Tey",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/steventey/",
+        "whyNeeded": "Link attribution platform competing against Bitly. CI on competitor pricing, features, and enterprise deals helps them find underserved segments."
+      },
+      {
+        "company": "Senja",
+        "website": "https://www.senja.io",
+        "industry": "Testimonial Management",
+        "competitors": ["Testimonial.to", "Trustmary", "Boast"],
+        "decisionMaker": "Oliver Meakings",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/olivermeakings/",
+        "whyNeeded": "Niche SaaS in testimonial collection. CI on competitor features, pricing, and integrations helps them differentiate."
+      },
+      {
+        "company": "Narrato",
+        "website": "https://www.narrato.io",
+        "industry": "Content Marketing Platform",
+        "competitors": ["Jasper", "Copy.ai", "Contently"],
+        "decisionMaker": "Sophia Solanki",
+        "decisionMakerRole": "Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/sophiasolanki/",
+        "whyNeeded": "AI content workspace competing against Jasper and Copy.ai. CI on competitor AI features, pricing, and customer wins helps them pivot faster."
+      },
+      {
+        "company": "Screpy",
+        "website": "https://www.screpy.com",
+        "industry": "SEO Tools",
+        "competitors": ["Ahrefs", "SEMrush", "Ubersuggest"],
+        "decisionMaker": "Emre Elbeyoglu",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/emreelbeyoglu/",
+        "whyNeeded": "Budget SEO tool competing against Ahrefs/SEMrush. CI on feature gaps, pricing tiers, and churn reasons helps them capture price-sensitive segments."
+      },
+      {
+        "company": "Wope",
+        "website": "https://www.wope.com",
+        "industry": "SEO & Marketing Suite",
+        "competitors": ["SEMrush", "Ahrefs", "Moz"],
+        "decisionMaker": "Unknown",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "",
+        "whyNeeded": "New marketing suite competing in SEO. CI on how incumbents price, bundle, and retain customers helps them find wedge features."
+      },
+      {
+        "company": "Mailmodo",
+        "website": "https://www.mailmodo.com",
+        "industry": "Email Marketing",
+        "competitors": ["Mailchimp", "ConvertKit", "Beehiiv"],
+        "decisionMaker": "Aquibur Rahman",
+        "decisionMakerRole": "CEO & Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/aquibur/",
+        "whyNeeded": "Interactive email platform competing against Mailchimp. CI on competitor automation features and deliverability helps them win SMBs."
+      },
+      {
+        "company": "lemlist",
+        "website": "https://www.lemlist.com",
+        "industry": "Cold Outreach SaaS",
+        "competitors": ["Instantly", "Smartlead", "Apollo"],
+        "decisionMaker": "Guillaume Moubeche",
+        "decisionMakerRole": "CEO & Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/guillaumemoubeche/",
+        "whyNeeded": "Cold email tool competing in a saturated market. CI on competitor deliverability, features, and pricing helps them maintain differentiation."
+      },
+      {
+        "company": "Instantly",
+        "website": "https://www.instantly.ai",
+        "industry": "Cold Email SaaS",
+        "competitors": ["lemlist", "Smartlead", "Apollo"],
+        "decisionMaker": "Nils Schneider",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/nilsschneider/",
+        "whyNeeded": "Fast-growing cold email tool. CI on competitor features, deliverability tech, and pricing is critical in this hyper-competitive space."
+      },
+      {
+        "company": "Relay.app",
+        "website": "https://www.relay.app",
+        "industry": "Workflow Automation",
+        "competitors": ["Zapier", "Make", "n8n"],
+        "decisionMaker": "Jacob Bank",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/jacobbanks/",
+        "whyNeeded": "AI-powered workflow automation competing against Zapier. CI on competitor integrations, pricing, and AI features helps them find gaps."
+      },
+      {
+        "company": "PhantomBuster",
+        "website": "https://www.phantombuster.com",
+        "industry": "Lead Generation Automation",
+        "competitors": ["Clay", "Apollo", "Lusha"],
+        "decisionMaker": "Guillaume Odier",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/guillaumeodier/",
+        "whyNeeded": "Data extraction and automation tool. CI on competitor data sources, compliance, and feature sets helps them evolve their platform."
+      },
+      {
+        "company": "YourGPT",
+        "website": "https://www.yourgpt.com",
+        "industry": "AI Chatbot Platform",
+        "competitors": ["Intercom", "Drift", "Tidio"],
+        "decisionMaker": "Unknown",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "",
+        "whyNeeded": "AI agent platform competing against Intercom. CI on competitor AI capabilities and enterprise features helps them position for SMBs."
+      },
+      {
+        "company": "Flowla",
+        "website": "https://www.flowla.com",
+        "industry": "Sales Enablement",
+        "competitors": ["Allego", "Highspot", "Showpad"],
+        "decisionMaker": "Unknown",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "",
+        "whyNeeded": "Digital sales rooms competing in enablement. CI on competitor deal room features and integrations helps them win mid-market."
+      }
+    ]
+  },
+  {
+    "category": "E-commerce Brands Competing Against Larger Players",
+    "prospects": [
+      {
+        "company": "Chubbies",
+        "website": "https://www.chubbies.com",
+        "industry": "Men's Apparel DTC",
+        "competitors": ["Bonobos", "J.Crew", "Amazon Essentials"],
+        "decisionMaker": "Tom Montgomery",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/tommontgomery/",
+        "whyNeeded": "DTC shorts brand competing against Amazon and large retailers. CI on competitor pricing, promotions, and product launches helps them stay relevant."
+      },
+      {
+        "company": "Bombas",
+        "website": "https://www.bombas.com",
+        "industry": "Apparel DTC",
+        "competitors": ["Nike", "Stance", "Amazon Basics"],
+        "decisionMaker": "David Heath",
+        "decisionMakerRole": "Co-Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/davidheath/",
+        "whyNeeded": "Sock and apparel brand competing against Nike and Amazon. CI on competitor product launches and pricing strategies is essential."
+      },
+      {
+        "company": "Dollar Shave Club",
+        "website": "https://www.dollarshaveclub.com",
+        "industry": "Personal Care DTC",
+        "competitors": ["Harry's", "Gillette", "Billie"],
+        "decisionMaker": "Jason Goldberger",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/jasongoldberger/",
+        "whyNeeded": "Competing against P&G's Gillette and Harry's. CI on competitor subscription models, retail expansion, and ad spend helps them defend market share."
+      },
+      {
+        "company": "Allbirds",
+        "website": "https://www.allbirds.com",
+        "industry": "Sustainable Footwear",
+        "competitors": ["Nike", "Adidas", "On Running"],
+        "decisionMaker": "Joey Zwillinger",
+        "decisionMakerRole": "Co-Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/joeyzwillinger/",
+        "whyNeeded": "Sustainable shoe brand competing against Nike and On Running. CI on competitor sustainability claims, product innovation, and pricing is critical."
+      },
+      {
+        "company": "Away",
+        "website": "https://www.awaytravel.com",
+        "industry": "Travel Luggage DTC",
+        "competitors": ["Samsonite", "Rimowa", "Monos"],
+        "decisionMaker": "Jen Rubio",
+        "decisionMakerRole": "Co-Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/jenrubio/",
+        "whyNeeded": "DTC luggage competing against Samsonite and Rimowa. CI on competitor retail strategies and product lines helps them plan launches."
+      },
+      {
+        "company": "Glossier",
+        "website": "https://www.glossier.com",
+        "industry": "Beauty DTC",
+        "competitors": ["Fenty Beauty", "Rare Beauty", "The Ordinary"],
+        "decisionMaker": "Kyle Leahy",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/kyleleahy/",
+        "whyNeeded": "Beauty brand competing against Fenty and Rare Beauty. CI on competitor influencer strategies and product launches helps maintain cult status."
+      },
+      {
+        "company": "Warby Parker",
+        "website": "https://www.warbyparker.com",
+        "industry": "Eyewear DTC",
+        "competitors": ["LensCrafters", "Zenni Optical", "EyeBuyDirect"],
+        "decisionMaker": "Dave Gilboa",
+        "decisionMakerRole": "Co-Founder & Co-CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/davegilboa/",
+        "whyNeeded": "DTC eyewear competing against Luxottica brands. CI on competitor pricing, retail expansion, and insurance partnerships is vital."
+      },
+      {
+        "company": "Casper",
+        "website": "https://www.casper.com",
+        "industry": "Mattress DTC",
+        "competitors": ["Tuft & Needle", "Purple", "Nectar"],
+        "decisionMaker": "Emilie Arel",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/emiliearel/",
+        "whyNeeded": "Mattress brand in a hyper-competitive space. CI on competitor trial periods, pricing, and retail distribution helps them defend market share."
+      },
+      {
+        "company": "Brooklinen",
+        "website": "https://www.brooklinen.com",
+        "industry": "Home Goods DTC",
+        "competitors": ["Parachute", "Boll & Branch", "Amazon Basics"],
+        "decisionMaker": "Rich Fulop",
+        "decisionMakerRole": "Co-Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/richfulop/",
+        "whyNeeded": "DTC bedding competing against Amazon and Parachute. CI on competitor materials, pricing, and wholesale expansion informs strategy."
+      },
+      {
+        "company": "FIGS",
+        "website": "https://www.wearfigs.com",
+        "industry": "Medical Apparel DTC",
+        "competitors": ["Cherokee", "Barco", "Healing Hands"],
+        "decisionMaker": "Trina Spear",
+        "decisionMakerRole": "Co-Founder & Co-CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/trinaspear/",
+        "whyNeeded": "Premium scrubs competing against Cherokee and Barco. CI on competitor distribution, pricing, and product innovation helps them stay premium."
+      }
+    ]
+  },
+  {
+    "category": "Business Consultants & Market Research",
+    "prospects": [
+      {
+        "company": "GrowthX",
+        "website": "https://www.growthx.com",
+        "industry": "Growth Advisory",
+        "competitors": ["Reforge", "Product School", "Demand Curve"],
+        "decisionMaker": "Alex Lieberman",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/alexlieberman/",
+        "whyNeeded": "Growth consulting for startups. CI reports would enhance their advisory services and be packaged as deliverables for portfolio companies."
+      },
+      {
+        "company": "Demand Curve",
+        "website": "https://www.demandcurve.com",
+        "industry": "Growth Training & Advisory",
+        "competitors": ["Reforge", "GrowthX", "CXL"],
+        "decisionMaker": "Julian Shapiro",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/julianshapiro/",
+        "whyNeeded": "Growth training company. CI on competitors' curriculum, pricing, and student outcomes helps them differentiate their programs."
+      },
+      {
+        "company": "Reforge",
+        "website": "https://www.reforge.com",
+        "industry": "Professional Development",
+        "competitors": ["Demand Curve", "Product School", "CXL"],
+        "decisionMaker": "Brian Balfour",
+        "decisionMakerRole": "CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/brianbalfour/",
+        "whyNeeded": "Growth and product training for tech professionals. CI on competitor course content and market positioning helps them stay ahead."
+      },
+      {
+        "company": "CXL",
+        "website": "https://www.cxl.com",
+        "industry": "Marketing Training",
+        "competitors": ["Reforge", "Demand Curve", "HubSpot Academy"],
+        "decisionMaker": "Peep Laja",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/peeplaja/",
+        "whyNeeded": "Marketing training platform. CI on competitor certifications and enterprise training deals helps them win corporate clients."
+      },
+      {
+        "company": "ProfitWell (now Paddle)",
+        "website": "https://www.profitwell.com",
+        "industry": "SaaS Metrics & Pricing",
+        "competitors": ["ChartMogul", "Baremetrics", "Chargebee"],
+        "decisionMaker": "Patrick Campbell",
+        "decisionMakerRole": "Founder (now at Paddle)",
+        "linkedinUrl": "https://www.linkedin.com/in/patrickcampbell/",
+        "whyNeeded": "SaaS pricing and metrics tools. CI on competitor pricing strategies and feature sets helps them advise SaaS clients on monetization."
+      },
+      {
+        "company": "Baremetrics",
+        "website": "https://www.baremetrics.com",
+        "industry": "SaaS Analytics",
+        "competitors": ["ChartMogul", "ProfitWell", "Chargebee"],
+        "decisionMaker": "Josh Pigford",
+        "decisionMakerRole": "Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/joshpigford/",
+        "whyNeeded": "SaaS analytics competing against ProfitWell. CI on competitor feature sets and integrations helps them capture more of the market."
+      },
+      {
+        "company": "ChartMogul",
+        "website": "https://www.chartmogul.com",
+        "industry": "SaaS Analytics",
+        "competitors": ["Baremetrics", "ProfitWell", "Chargebee"],
+        "decisionMaker": "Nick Franklin",
+        "decisionMakerRole": "Founder & CEO",
+        "linkedinUrl": "https://www.linkedin.com/in/nickfranklin/",
+        "whyNeeded": "Subscription analytics platform. CI on competitor reporting features and data integrations helps them win enterprise accounts."
+      },
+      {
+        "company": "Beam (by ProfitWell)",
+        "website": "https://www.beam.community",
+        "industry": "SaaS Community & Research",
+        "competitors": ["SaaStr", "Reforge", "SaaS Academy"],
+        "decisionMaker": "Unknown",
+        "decisionMakerRole": "Community Lead",
+        "linkedinUrl": "",
+        "whyNeeded": "SaaS community and benchmarking. CI on competitor community engagement and research output helps them attract premium members."
+      },
+      {
+        "company": "SaaS Academy",
+        "website": "https://www.saasacademy.com",
+        "industry": "SaaS Coaching",
+        "competitors": ["SaaStr", "Reforge", "SaaS Growth Hacks"],
+        "decisionMaker": "Dan Martell",
+        "decisionMakerRole": "Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/danmartell/",
+        "whyNeeded": "Coaching for SaaS founders. CI on competitor programs, pricing, and success stories helps them position as the premium option."
+      },
+      {
+        "company": "Forget the Funnel",
+        "website": "https://www.forgetthefunnel.com",
+        "industry": "SaaS Marketing Training",
+        "competitors": ["Reforge", "CXL", "Demand Curve"],
+        "decisionMaker": "Claire Suellentrop",
+        "decisionMakerRole": "Co-Founder",
+        "linkedinUrl": "https://www.linkedin.com/in/clairesuellentrop/",
+        "whyNeeded": "Customer-led growth training for SaaS. CI on competitor frameworks and pricing helps them differentiate their methodology."
+      }
+    ]
+  }
+]

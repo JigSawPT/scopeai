@@ -6,7 +6,7 @@
 
 > Rule: **nothing is marked COMPLETE without a verifiable artifact.**
 
-**Last verified:** 2026-08-10 ~12:10 UTC
+**Last verified:** 2026-08-11 ~15:00 UTC
 
 ---
 
@@ -14,13 +14,21 @@
 
 | # | Requirement | Status | Evidence / Notes |
 |---|---|---|---|
-| 1 | Code Repository shared with judges | PARTIAL | Public repo live: https://github.com/JigSawPT/scopeai — owner must share with `testing@devpost.com` & `judging@hacker.fund` at submission |
-| 2 | 3-Minute Video | COMPLETE | Self-hosted: https://scopeai-video-746706977308.us-central1.run.app (2m28s, 1080p, real production footage + narration). Source MP4: `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-10_12-03-10.mp4`. If YouTube/Vimeo is required, owner uploads the MP4 (one click) |
+| 1 | Code Repository shared with judges | COMPLETE | Repo is PUBLIC: https://github.com/JigSawPT/scopeai (verified via GitHub API 2026-08-11). No invitation needed. |
+| 2 | 3-Minute Video | PARTIAL | Self-hosted: https://scopeai-video-746706977308.us-central1.run.app (2m28s, 1080p). MP4 verified present (15 MB). YouTube metadata ready in `youtube_upload_ready.md` — owner uploads (one click). |
 | 3 | Written Narrative | COMPLETE | `xprize_narrative.md` — 500-1000 words, all figures measured from live system 2026-08-10 |
-| 4 | Financial Evidence | PARTIAL | `xprize_pnl_template.csv` with real Stripe data (refunded verification order + real fee). Append real customer orders as they occur; attach Stripe Payments export at submission |
+| 4 | Financial Evidence | PARTIAL | `xprize_pnl_template.csv` with real Stripe data (refunded verification order + real fee) + GCP costs to date ($2.80 lifetime). Append real customer orders as they occur; attach Stripe Payments export at submission |
 | 5 | Google Cloud Bills | PENDING | Owner to export invoice PDF from Cloud Console Billing (one click); amount then filled in P&L |
-| 6 | Product & Telemetry Evidence | VERIFIED LIVE | Production E2E: payment → grounded pipeline → cited report; telemetry dashboard live at /report/[id] |
-| 7 | Customer Evidence | PENDING | Requires real arm's-length orders — outreach kit: `customer_outreach.md` |
+| 6 | Product & Telemetry Evidence | VERIFIED LIVE | Production E2E re-verified 2026-08-11 (revision 00011): legacy sample reports live (HubSpot 63/Shopify 49/Notion 44 sources), new orders token-protected (401/404 without token), demo cooldown 15 min, homepage shows sample reports |
+| 7 | Customer Evidence | PENDING | Requires real arm's-length orders — outreach kit: `customer_outreach.md` + `linkedin_followups.md` |
+
+---
+
+## Outreach Log (verified 2026-08-11)
+
+- 9 direct messages sent and confirmed in inbox: Katelyn Bourgoin, Andrea Nwachukwu (Kalungi), Peep Laja, James Hawkins (PostHog), Zeh Fernandes (Resend), Chris Frantz (Loops), Raquel Reis (Octoboard), Steven Tey (Dub), Jen Spencer (Booth).
+- 7 connection requests pending (batch 1, Aug 10).
+- 0 replies to date. No fabricated testimonials — honest status.
 
 ---
 
@@ -47,8 +55,8 @@
 
 ## Owner action list (only a human can do these)
 
-1. Upload the rendered video to YouTube/Vimeo (public, unlisted NOT allowed) and record the link. File: `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-10_12-03-10.mp4`. Video is already publicly accessible at https://scopeai-video-746706977308.us-central1.run.app (self-hosted, no login required).
-2. Export the GCP invoice PDF (Cloud Console → Billing → Documents).
-3. Send outreach (templates in `customer_outreach.md`) and collect 5-10 real orders.
-4. Share the GitHub repo with `testing@devpost.com` & `judging@hacker.fund`; submit on Devpost before Aug 17 13:00 PDT.
+1. Upload the rendered video to YouTube (Public) — metadata copy-paste ready in `youtube_upload_ready.md`. File: `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-10_12-03-10.mp4`. Video is already publicly accessible at https://scopeai-video-746706977308.us-central1.run.app (self-hosted, no login required).
+2. Export the GCP invoice PDF (Cloud Console → Billing → Documents). URL: https://console.cloud.google.com/billing/010CD1-58E5B1-15E14C/documents?project=digital-proton-422716-p4
+3. Send the LinkedIn follow-ups in `linkedin_followups.md` (9 nudges, manual send, ~10 min) and collect any replies for testimonials.
+4. Submit on Devpost before Aug 17 13:00 PDT using fields in `SUBMISSION.md` (repo is already public — no share invite needed).
 5. Post-competition hygiene: roll Stripe keys; delete machine-level `GEMINI_API_KEY` env var (needs admin).

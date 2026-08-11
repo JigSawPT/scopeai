@@ -1,0 +1,31 @@
+[
+  {
+    "check": "inbox",
+    "convos": [
+      "Jen Spencer 10:25 10:25 Você: Hi Jen - I'm testing ScopeAI: a cited competitive ",
+      "Steven Tey 10:25 10:25 Você: Hi Steven - love what you've built at Dub. I'm test"
+    ]
+  },
+  {
+    "target": "Garrett Mehrguth",
+    "status": "skipped",
+    "reason": "compose editor never rendered (2 attempts)"
+  },
+  {
+    "target": "Sujan Patel",
+    "status": "skipped",
+    "reason": "compose editor never rendered (2 attempts)"
+  },
+  {
+    "target": "Josh Pigford",
+    "inspect": "0 notificação Pular para pesquisa Pular para conteúdo principal Pular para conteúdo principal Pular para à parte Pular para rodapé Início 1 Minha rede Vagas Mensagens 18 Notificações Eu Para negócios Experimente novament"
+  },
+  {
+    "target": "Patrick Campbell",
+    "inspect": "0 notificação Pular para pesquisa Pular para conteúdo principal Pular para conteúdo principal Pular para à parte Pular para rodapé Início 1 Minha rede Vagas Mensagens 18 Notificações Eu Para negócios Experimente novament"
+  },
+  {
+    "target": "Guillaume Odier",
+    "inspect": "0 notificação Pular para pesquisa Pular para conteúdo principal Pular para conteúdo principal Pular para à parte Pular para rodapé Início 1 Minha rede Vagas Mensagens 18 Notificações Eu Para negócios Experimente novament"
+  }
+]

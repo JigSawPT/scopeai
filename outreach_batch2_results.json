@@ -1,0 +1,40 @@
+[
+  {
+    "target": "Steven Tey",
+    "status": "sent"
+  },
+  {
+    "target": "Jen Spencer",
+    "status": "sent"
+  },
+  {
+    "target": "Garrett Mehrguth",
+    "status": "skipped",
+    "reason": "compose editor did not render"
+  },
+  {
+    "target": "Sujan Patel",
+    "status": "skipped",
+    "reason": "compose editor did not render"
+  },
+  {
+    "target": "Nick Franklin",
+    "status": "skipped",
+    "reason": "connect-only profile (no direct messaging)"
+  },
+  {
+    "target": "Josh Pigford",
+    "status": "skipped",
+    "reason": "company \"Baremetrics\" not in profile"
+  },
+  {
+    "target": "Patrick Campbell",
+    "status": "skipped",
+    "reason": "company \"ProfitWell\" not in profile"
+  },
+  {
+    "target": "Guillaume Odier",
+    "status": "skipped",
+    "reason": "company \"PhantomBuster\" not in profile"
+  }
+]

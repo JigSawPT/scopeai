@@ -39,6 +39,7 @@ export interface AnalysisResult {
 
 export interface OrderRequest {
   id: string;
+  access_token: string;
   business_name: string;
   business_description: string;
   industry: string;

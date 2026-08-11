@@ -1,0 +1,83 @@
+﻿{
+  "generated_at": "2026-08-11T00:55:00Z",
+  "description": "Sample ScopeAI competitive intelligence reports for marketing material",
+  "reports": [
+    {
+      "business_name": "Mailchimp",
+      "industry": "Email Marketing",
+      "target_market": "Small businesses and creators",
+      "competitors": ["ConvertKit", "ActiveCampaign", "Brevo"],
+      "report_id": "beba6d95-7a1e-4bde-878d-3a083d55bad5",
+      "order_id": "8742e137-0206-43ad-a6d9-d52ba9f8db09",
+      "executive_summary": "The email marketing market, particularly for small businesses and creators, continues its rapid growth, driven by high ROI, personalization, and automation. Mailchimp, originally a freemium email mark",
+      "num_sources": 21,
+      "num_competitors": 3,
+      "report_url": "https://scopeai-746706977308.us-central1.run.app/report/beba6d95-7a1e-4bde-878d-3a083d55bad5",
+      "generated_at": "2026-08-11T00:42:18.285Z"
+    },
+    {
+      "business_name": "Notion",
+      "industry": "Productivity/Project Management",
+      "target_market": "Teams and startups",
+      "competitors": ["Confluence", "Coda", "Obsidian"],
+      "report_id": "b5b79a9f-56a9-45c6-88f3-3684dfe4c7e6",
+      "order_id": "82598937-6793-4958-b000-1cac29a22c71",
+      "executive_summary": "The Productivity/Project Management market for teams and startups is rapidly evolving, driven by the increasing need for integrated, flexible, and AI-powered solutions. Notion, with its all-in-one wor",
+      "num_sources": 44,
+      "num_competitors": 3,
+      "report_url": "https://scopeai-746706977308.us-central1.run.app/report/b5b79a9f-56a9-45c6-88f3-3684dfe4c7e6",
+      "generated_at": "2026-08-11T00:47:30.000Z"
+    },
+    {
+      "business_name": "Calendly",
+      "industry": "Scheduling Software",
+      "target_market": "Sales teams and freelancers",
+      "competitors": ["SavvyCal", "Cal.com", "YouCanBookMe"],
+      "report_id": "2a9561d3-6114-4e8d-9ab6-73d0a01765cb",
+      "order_id": "8239178d-c9c6-49f8-b5de-00b7aa97aaec",
+      "executive_summary": "Calendly maintains a strong market position as a leading scheduling automation platform, particularly valued by sales teams and freelancers for its ease of use and comprehensive feature set. While its",
+      "num_sources": 0,
+      "num_competitors": 3,
+      "report_url": "https://scopeai-746706977308.us-central1.run.app/report/2a9561d3-6114-4e8d-9ab6-73d0a01765cb",
+      "generated_at": "2026-08-11T00:51:00.000Z"
+    },
+    {
+      "business_name": "Shopify",
+      "industry": "E-commerce Platform",
+      "target_market": "Small businesses selling online",
+      "competitors": ["WooCommerce", "BigCommerce", "Squarespace Commerce"],
+      "report_id": "c8bd42f7-3f32-456d-ac31-3eb6a11d72b5",
+      "order_id": "c9898715-9782-43cd-bd07-133bdada1b1d",
+      "executive_summary": "Shopify is a dominant e-commerce platform for small businesses, renowned for its user-friendly interface, robust scalability, and extensive app ecosystem. While it simplifies online selling, it faces",
+      "num_sources": 49,
+      "num_competitors": 3,
+      "report_url": "https://scopeai-746706977308.us-central1.run.app/report/c8bd42f7-3f32-456d-ac31-3eb6a11d72b5",
+      "generated_at": "2026-08-11T00:53:00.000Z"
+    },
+    {
+      "business_name": "HubSpot",
+      "industry": "CRM / Marketing Automation",
+      "target_market": "B2B companies",
+      "competitors": ["Salesforce", "Pipedrive", "Zoho CRM"],
+      "report_id": "0f5e11bd-abd6-4f28-b4a3-f476c7d7fe0e",
+      "order_id": "75c54b30-fe6c-4f05-b3a6-c71e81106205",
+      "executive_summary": "The B2B CRM and Marketing Automation market is experiencing rapid growth, primarily driven by the imperative for AI-driven hyper-personalization and streamlined revenue operations. HubSpot, with its i",
+      "num_sources": 63,
+      "num_competitors": 3,
+      "report_url": "https://scopeai-746706977308.us-central1.run.app/report/0f5e11bd-abd6-4f28-b4a3-f476c7d7fe0e",
+      "generated_at": "2026-08-11T00:55:00.000Z"
+    }
+  ],
+  "summary": {
+    "total_reports": 5,
+    "total_sources": 177,
+    "avg_sources_per_report": 35.4,
+    "report_links": [
+      "https://scopeai-746706977308.us-central1.run.app/report/beba6d95-7a1e-4bde-878d-3a083d55bad5",
+      "https://scopeai-746706977308.us-central1.run.app/report/b5b79a9f-56a9-45c6-88f3-3684dfe4c7e6",
+      "https://scopeai-746706977308.us-central1.run.app/report/2a9561d3-6114-4e8d-9ab6-73d0a01765cb",
+      "https://scopeai-746706977308.us-central1.run.app/report/c8bd42f7-3f32-456d-ac31-3eb6a11d72b5",
+      "https://scopeai-746706977308.us-central1.run.app/report/0f5e11bd-abd6-4f28-b4a3-f476c7d7fe0e"
+    ]
+  }
+}

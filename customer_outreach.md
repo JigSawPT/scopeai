@@ -7,27 +7,27 @@ Copy-paste into LinkedIn DMs, email, or community posts.
 
 ## 1. Marketing Agencies (white-label research)
 
-> Hi [Name] — I noticed [Agency Name] works with SaaS/tech clients on positioning and campaigns. I built ScopeAI: an AI system that produces a full competitive intelligence report (pricing, positioning, review sentiment, strategic gaps) in ~3 minutes for $99. No research team needed.
+> Hi [Name] — I noticed [Agency Name] works with SaaS/tech clients on positioning and campaigns. I built ScopeAI: an AI system that turns public competitor pricing, positioning, and review evidence into a cited competitive brief in minutes.
 >
-> I'm offering early reports at half price this week. Want me to run one on [a relevant competitor to their client] so you can judge the quality? Live demo: https://scopeai-746706977308.us-central1.run.app/demo
+> I'm testing it with a small number of agencies at $49 per pilot, in exchange for direct feedback on whether it is useful in a real client workflow. Would a brief for [a relevant competitor to their client] be useful?
 >
 > Would love your feedback either way.
 
 ## 2. SaaS Founders (pre-launch/fundraising intel)
 
-> Hey [Name] — congrats on [recent milestone]. I built an AI tool that gives you a full competitor analysis in ~3 minutes: real pricing data, feature gaps, review sentiment, all sourced from the live web with citations.
+> Hey [Name] — congrats on [recent milestone]. I built an AI tool that turns public competitor pricing, positioning, and review evidence into a cited brief in minutes.
 >
 > It's $49 for a single competitor brief. I'm looking for honest feedback from founders who actually need this — would you try it? Live demo: https://scopeai-746706977308.us-central1.run.app/demo
 
 ## 3. E-commerce / D2C Brands
 
-> Hi [Name] — quick question: how much time does your team spend monitoring competitor pricing and positioning? I built ScopeAI — autonomous AI agents that do a full competitive deep-dive in under 3 minutes, sourced from the live web.
+> Hi [Name] — quick question: how much time does your team spend researching competitor pricing and positioning? I built ScopeAI — AI agents that turn public competitor evidence into a cited competitive brief in minutes.
 >
 > $49 for a single competitor brief, $99 for 3 competitors. Would love to run one on [their niche] and see if it's useful. Demo: https://scopeai-746706977308.us-central1.run.app/demo
 
 ## 4. Freelance Consultants (research accelerator)
 
-> Hi [Name] — I see you do consulting in [their niche]. I built a tool that might save you hours of competitive research: ScopeAI runs autonomous AI agents that scrape the live web and produce a structured intelligence report in ~3 minutes.
+> Hi [Name] — I see you do consulting in [their niche]. I built a tool that might save you hours of competitive research: ScopeAI turns public competitor pricing, positioning, and review evidence into a structured, cited brief in minutes.
 >
 > $99 for a 3-competitor analysis — curious if this would speed up your client deliverables. Happy to run a free demo on one of your clients' competitors so you can evaluate the quality. Demo: https://scopeai-746706977308.us-central1.run.app/demo
 
@@ -48,7 +48,7 @@ Copy-paste into LinkedIn DMs, email, or community posts.
 ## Response Templates
 
 **"Is it just ChatGPT?"**
-> Good question — ChatGPT gives generic prose with no real sources. ScopeAI uses Gemini 2.5 Flash with live Google Search grounding: every pricing number, every competitor claim, links to a real web source. The live telemetry dashboard shows the agents working in real time. Try the demo and judge for yourself.
+> The difference is the workflow: ScopeAI uses Gemini 2.5 Flash with Google Search grounding to collect public sources, structures the result as a competitive brief, and makes the source links available with the report. It is a pilot, so I am specifically looking for feedback on whether the evidence and recommendations are useful.
 
 **"Can I see a sample first?"**
 > Absolutely — the demo page runs the real pipeline on 3 preset scenarios: https://scopeai-746706977308.us-central1.run.app/demo
@@ -57,4 +57,4 @@ Copy-paste into LinkedIn DMs, email, or community posts.
 > Yes, 100% money-back guarantee within 7 days. If the report doesn't provide actionable insights, I refund in full.
 
 **"How is this different from SEMrush/Ahrefs?"**
-> Those are SEO tools — they track keywords and backlinks. ScopeAI is a strategic intelligence report: competitor positioning, pricing analysis, SWOT, market gaps, actionable recommendations. It's closer to what a $10K consulting engagement delivers, but autonomous and instant.
+> Those products specialize in SEO data. ScopeAI is a one-time strategic brief focused on public pricing, positioning, review themes, and recommendations. It is designed to accelerate a consultant or founder's existing judgment, not replace it.

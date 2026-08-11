@@ -266,7 +266,7 @@ function OrderForm() {
             {/* Email Address */}
             <div>
               <label className="block text-sm font-medium text-slate-300 mb-2 flex items-center gap-2">
-                <Mail className="w-4 h-4 text-[#00E5FF]" /> Email to Receive Report *
+                <Mail className="w-4 h-4 text-[#00E5FF]" /> Email for Stripe Checkout *
               </label>
               <input
                 type="email"
@@ -289,7 +289,7 @@ function OrderForm() {
                 <ArrowRight className="w-5 h-5" />
               </button>
               <div className="flex items-center justify-center gap-4 mt-4 text-xs text-slate-500">
-                <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Instant Execution</span>
+                <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> Private report link</span>
                 <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-yellow-400" /> Powered by Gemini 2.5 Flash</span>
               </div>
             </div>
@@ -311,4 +311,3 @@ export default function OrderPage() {
     </Suspense>
   );
 }
-

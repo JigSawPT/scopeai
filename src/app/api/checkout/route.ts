@@ -5,23 +5,51 @@ import { saveOrder } from '@/lib/store';
 import { runAgentPipeline } from '@/lib/agents/orchestrator';
 import { getErrorMessage } from '@/lib/gemini';
 
+const MAX_COMPETITORS = {
+  starter: 1,
+  professional: 3,
+  enterprise: 5,
+} as const;
+
+function text(value: unknown, maxLength: number): string {
+  return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
+}
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
     const tierKey = (body.tier || 'starter') as keyof typeof TIER_PRICES;
     const tierConfig = TIER_PRICES[tierKey] || TIER_PRICES.starter;
+    const competitors = Array.isArray(body.competitors)
+      ? body.competitors.map((competitor: unknown) => text(competitor, 120)).filter(Boolean)
+      : [];
+
+    const businessName = text(body.business_name, 120);
+    const businessDescription = text(body.business_description, 2_000);
+    const industry = text(body.industry, 120);
+    const targetMarket = text(body.target_market, 500);
+    const customerEmail = text(body.customer_email, 254);
+
+    if (!businessName || !businessDescription || !industry || !targetMarket || !customerEmail.includes('@')) {
+      return NextResponse.json({ error: 'Complete all required fields with a valid email address.' }, { status: 400 });
+    }
+
+    if (competitors.length === 0 || competitors.length > MAX_COMPETITORS[tierKey]) {
+      return NextResponse.json({ error: `${tierConfig.name} supports 1-${MAX_COMPETITORS[tierKey]} competitors.` }, { status: 400 });
+    }
 
     const order: OrderRequest = {
       id: crypto.randomUUID(),
-      business_name: body.business_name || 'Acme Corp',
-      business_description: body.business_description || '',
-      industry: body.industry || 'Software',
-      target_market: body.target_market || 'General',
-      competitors: body.competitors || [],
-      specific_questions: body.specific_questions || '',
+      access_token: crypto.randomUUID(),
+      business_name: businessName,
+      business_description: businessDescription,
+      industry,
+      target_market: targetMarket,
+      competitors,
+      specific_questions: text(body.specific_questions, 1_000),
       tier: tierKey,
-      customer_email: body.customer_email || 'customer@example.com',
+      customer_email: customerEmail,
       status: 'pending',
       created_at: new Date().toISOString(),
     };
@@ -49,7 +77,7 @@ export async function POST(request: Request) {
           },
         ],
         mode: 'payment',
-        success_url: `${origin}/report/${order.id}?success=true`,
+        success_url: `${origin}/report/${order.id}?access=${order.access_token}&success=true`,
         cancel_url: `${origin}/order?canceled=true`,
         metadata: {
           order_id: order.id,
@@ -64,7 +92,7 @@ export async function POST(request: Request) {
     runAgentPipeline(order).catch(err => console.error('Sandbox pipeline error:', err));
 
     return NextResponse.json({ 
-      url: `${origin}/report/${order.id}?demo=true`, 
+      url: `${origin}/report/${order.id}?access=${order.access_token}&demo=true`,
       order_id: order.id,
       message: 'Sandbox evaluation mode active — redirecting directly to report execution.'
     });

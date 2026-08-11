@@ -54,9 +54,7 @@ export default function DemoPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...selectedDemo,
-          competitors: selectedDemo.competitors.split("\n").filter((c) => c.length > 0),
-          customer_email: "demo@scopeai.app",
+          demo_id: selectedDemo.id,
         }),
       });
 
@@ -65,7 +63,7 @@ export default function DemoPage() {
       }
 
       const data = await res.json();
-      router.push(`/report/${data.order_id}`);
+      router.push(`/report/${data.order_id}?access=${data.access_token}`);
     } catch (err) {
       console.error(err);
       setLoading(false);
