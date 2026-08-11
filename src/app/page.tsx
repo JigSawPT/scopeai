@@ -451,7 +451,7 @@ export default function Home() {
               <div className="flex items-center gap-1">
                 Powered by <Brain className="w-4 h-4 text-[#7C3AED]" /> Gemini
               </div>
-              <div>Built for Build with Gemini XPRIZE</div>
+              <div>Built with Gemini on Google Cloud</div>
             </div>
           </div>
           <div className="mt-8 text-center text-xs text-slate-600">

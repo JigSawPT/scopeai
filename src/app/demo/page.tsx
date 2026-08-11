@@ -56,7 +56,7 @@ export default function DemoPage() {
         body: JSON.stringify({
           ...selectedDemo,
           competitors: selectedDemo.competitors.split("\n").filter((c) => c.length > 0),
-          customer_email: "judge@xprize.org",
+          customer_email: "demo@scopeai.app",
         }),
       });
 
@@ -87,25 +87,25 @@ export default function DemoPage() {
             <div className="w-7 h-7 rounded bg-[#00E5FF] flex items-center justify-center">
               <Bot className="w-4 h-4 text-[#020617]" />
             </div>
-            <span className="font-bold tracking-tight text-lg">Scope<span className="text-[#00E5FF]">AI</span> XPRIZE Evaluation</span>
+            <span className="font-bold tracking-tight text-lg">Scope<span className="text-[#00E5FF]">AI</span></span>
           </Link>
           <div className="text-xs text-slate-400 font-mono flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-            Judge Sandbox Mode
+            <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse" />
+            Live Demo
           </div>
         </div>
       </header>
 
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 py-12">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-yellow-400/30 bg-yellow-400/10 text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Zap className="w-3.5 h-3.5" /> Instant Live Demonstration for Judges
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00E5FF]/30 bg-[#00E5FF]/10 text-[#00E5FF] text-xs font-semibold uppercase tracking-wider mb-4">
+            <Zap className="w-3.5 h-3.5" /> Live Demo — See It In Action
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-3">
-            Test Gemini 2.5 Flash <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#7C3AED]">Autonomy</span>
+            Watch AI Agents <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#7C3AED]">Research Competitors</span>
           </h1>
           <p className="text-slate-400 text-base max-w-xl mx-auto">
-            Select a preset business scenario or custom brief to witness the 3-agent Gemini pipeline execute live research, strategic cross-referencing, and report synthesis.
+            Select a preset business scenario to watch 3 autonomous agents execute live web research, strategic analysis, and report synthesis.
           </p>
         </div>
 
@@ -144,16 +144,16 @@ export default function DemoPage() {
           {loading && (
             <div className="absolute inset-0 bg-[#020617]/95 backdrop-blur-md z-30 flex flex-col items-center justify-center p-6 text-center rounded-2xl">
               <div className="w-16 h-16 rounded-full border-4 border-[#00E5FF]/20 border-t-[#00E5FF] animate-spin mb-6" />
-              <h3 className="text-xl font-bold mb-2 text-white">Gemini 2.5 Flash Pipeline Active</h3>
+              <h3 className="text-xl font-bold mb-2 text-white">Agents Executing Research...</h3>
               <p className="text-slate-400 text-sm max-w-md animate-pulse">
-                Investigator → Analyst → Writer executing live. Redirecting to real-time agent telemetry console...
+                Investigator → Analyst → Writer running live. Redirecting to real-time telemetry dashboard...
               </p>
             </div>
           )}
 
           <div className="border-b border-white/10 pb-4 flex items-center justify-between">
             <h3 className="font-bold text-lg text-white flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#00E5FF]" /> {selectedDemo.business_name} Sandbox Brief
+              <Sparkles className="w-5 h-5 text-[#00E5FF]" /> {selectedDemo.business_name} Demo Brief
             </h3>
             <span className="text-xs font-mono text-[#00E5FF] bg-[#00E5FF]/10 px-3 py-1 rounded-full border border-[#00E5FF]/30">
               Preset Brief
@@ -179,7 +179,7 @@ export default function DemoPage() {
               className="w-full bg-gradient-to-r from-[#00E5FF] to-[#7C3AED] text-white py-4 px-6 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,229,255,0.4)] disabled:opacity-50"
             >
               <Play className="w-5 h-5 fill-white" />
-              <span>Execute Live Gemini Agent Pipeline</span>
+              <span>Run Live Analysis</span>
             </button>
           </div>
         </div>
