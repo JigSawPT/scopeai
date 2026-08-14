@@ -242,7 +242,11 @@ export default function Home() {
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-5xl font-bold mb-4">Transparent Pricing</h2>
-              <p className="text-slate-400 text-lg">One-time payment. No subscriptions. Instant ROI.</p>
+              <p className="text-slate-400 text-lg mb-4">One-time payment. No subscriptions. Instant ROI.</p>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-mono">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>Launch Pilot: Use code <strong className="text-emerald-200 uppercase">SHOWHN100</strong> at checkout for 100% off (First 10 businesses)</span>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 items-center">

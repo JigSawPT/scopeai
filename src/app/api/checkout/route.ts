@@ -77,6 +77,7 @@ export async function POST(request: Request) {
           },
         ],
         mode: 'payment',
+        allow_promotion_codes: true,
         success_url: `${origin}/report/${order.id}?access=${order.access_token}&success=true`,
         cancel_url: `${origin}/order?canceled=true`,
         metadata: {

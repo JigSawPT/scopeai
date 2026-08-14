@@ -128,6 +128,10 @@ function OrderForm() {
           <p className="text-slate-400 text-base max-w-xl mx-auto">
             Provide details about your business and competitors. Our Gemini 2.5 agents will begin autonomous research immediately.
           </p>
+          <div className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-mono">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+            <span>Launch Pilot: Use coupon <strong className="text-emerald-200 uppercase">SHOWHN100</strong> at checkout for 100% off (Limited to first 10 businesses)</span>
+          </div>
         </div>
 
         {/* Tier Selector Tabs */}

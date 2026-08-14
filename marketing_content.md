@@ -29,6 +29,7 @@ What I learned building this:
 I've been running this on my own competitors for a few months and it's replaced my quarterly research slog. I'm opening it up as a paid tool — $49 for a single competitor deep-dive, $99 for 3 competitors, $149 for 5+.
 
 If you want to see what the output looks like, here's a live demo that runs the real pipeline on preset scenarios: https://scopeai-746706977308.us-central1.run.app/demo
+And if you want to test your own competitors, coupon code `SHOWHN100` at checkout (https://scopeai-746706977308.us-central1.run.app/order ) gives 100% off for the first 10 founders here.
 
 Would love feedback from other SaaS founders on whether this would actually save you time. What competitors would you want analyzed?
 
@@ -198,12 +199,14 @@ I was spending 40+ hours per quarter doing competitive analysis manually for my 
 
 The demo runs the real pipeline on 3 preset scenarios. You can watch the agents work in real time via the telemetry dashboard.
 
-**Pricing:** $49 (1 competitor), $99 (3 competitors), $149 (5+ competitors)
+**Pricing & Launch Offer:**
+- Standard: $49 (1 competitor), $99 (3 competitors), $149 (5+ competitors)
+- **Show HN Launch Pilot:** We enabled coupon code `SHOWHN100` at checkout (https://scopeai-746706977308.us-central1.run.app/order ) for 100% off for the first 10 Hacker News users in exchange for raw, brutal feedback on output quality.
 
 Would love feedback on:
-- Report quality vs. what you'd expect from a consultant
-- Whether the citations are useful/trustworthy
-- What's missing from the current output
+- Report quality vs. what you'd expect from a human consultant
+- Whether the citations and telemetry logs are useful/trustworthy
+- What's missing from the current output format
 
 ---
 
