@@ -37,7 +37,7 @@ Tone: confident, factual, no hype claims that the footage does not back.
 ## Notes
 
 - Footage is a genuine headless-browser capture of
-  https://scopeai-746706977308.us-central1.run.app on 2026-08-10 (no simulation).
+  https://scopeai-746706977308.us-central1.run.app on 2026-08-17 (no simulation).
 - Model name must read "Gemini 2.5 Flash" everywhere (never the retired
   invented name).
 - No BGM chosen; narration-only audio identity (deliberate, factual tone).

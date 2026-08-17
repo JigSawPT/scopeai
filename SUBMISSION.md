@@ -35,7 +35,7 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 **Try it:** https://scopeai-746706977308.us-central1.run.app/demo
 
-**Video:** https://scopeai-video-746706977308.us-central1.run.app (self-hosted MP4 with video player, no login required). If YouTube/Vimeo is required by judges, upload the same MP4 file.
+**Video:** https://scopeai-video-746706977308.us-central1.run.app (self-hosted MP4 with video player, no login required). Source MP4: `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-17_06-33-28.mp4`.
 
 **GitHub:** https://github.com/JigSawPT/scopeai
 
@@ -52,6 +52,6 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 ## Owner Steps (3 minutes total)
 
-1. Upload video: open YouTube Studio → Create → Upload → select `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo-final.mp4` → title "ScopeAI — Autonomous Competitive Intelligence (XPRIZE)" → Public → Publish
+1. Upload video: open YouTube Studio → Create → Upload → select `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-17_06-33-28.mp4` → title "ScopeAI — Autonomous Competitive Intelligence (XPRIZE)" → Public → Publish
 2. Download GCP billing report PDF (Ctrl+P -> Save as PDF): https://console.cloud.google.com/billing/010CD1-58E5B1-15E14C/reports?project=digital-proton-422716-p4
 3. Submit on Devpost: paste the fields above + video link + demo URL

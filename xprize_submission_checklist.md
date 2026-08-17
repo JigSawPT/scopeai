@@ -15,7 +15,7 @@
 | # | Requirement | Status | Evidence / Notes |
 |---|---|---|---|
 | 1 | Code Repository shared with judges | COMPLETE | Repo is PUBLIC: https://github.com/JigSawPT/scopeai (verified via GitHub API 2026-08-11). No invitation needed. |
-| 2 | 3-Minute Video | PARTIAL | Self-hosted: https://scopeai-video-746706977308.us-central1.run.app (2m28s, 1080p). MP4 verified present (15 MB). YouTube metadata ready in `youtube_upload_ready.md` — owner uploads (one click). |
+| 2 | 3-Minute Video | COMPLETE | Self-hosted: https://scopeai-video-746706977308.us-central1.run.app (2m28s, 1080p, fresh production footage of current site + narration). Source MP4: `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-17_06-33-28.mp4`. |
 | 3 | Written Narrative | COMPLETE | `xprize_narrative.md` — 500-1000 words, all figures measured from live system 2026-08-10 |
 | 4 | Financial Evidence | PARTIAL | `xprize_pnl_template.csv` with real Stripe data (refunded verification order + real fee) + GCP costs to date ($2.80 lifetime). Append real customer orders as they occur; attach Stripe Payments export at submission |
 | 5 | Google Cloud Bills | PENDING | Owner to export invoice PDF from Cloud Console Billing (one click); amount then filled in P&L |
