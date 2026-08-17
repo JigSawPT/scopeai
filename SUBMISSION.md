@@ -50,8 +50,8 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 - [ ] Google Cloud billing PDF: export from Cloud Console → Billing → Documents
 - [ ] Live demo URL: https://scopeai-746706977308.us-central1.run.app/demo
 
-## Owner Steps (5 minutes total)
+## Owner Steps (3 minutes total)
 
-1. Upload video: open YouTube Studio → Create → Upload → select `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-10_12-03-10.mp4` → title "ScopeAI — Autonomous Competitive Intelligence (XPRIZE)" → Public → Publish
-2. Download GCP invoice: https://console.cloud.google.com/billing/010CD1-58E5B1-15E14C/documents?project=digital-proton-422716-p4
+1. Upload video: open YouTube Studio → Create → Upload → select `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo-final.mp4` → title "ScopeAI — Autonomous Competitive Intelligence (XPRIZE)" → Public → Publish
+2. Download GCP billing report PDF (Ctrl+P -> Save as PDF): https://console.cloud.google.com/billing/010CD1-58E5B1-15E14C/reports?project=digital-proton-422716-p4
 3. Submit on Devpost: paste the fields above + video link + demo URL
