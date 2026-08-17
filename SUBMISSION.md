@@ -35,7 +35,7 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 **Try it:** https://scopeai-746706977308.us-central1.run.app/demo
 
-**Video:** [YouTube link after upload] — 2m28s, 1080p, genuine Playwright captures of the production site with narration. Self-hosted backup: https://scopeai-video-746706977308.us-central1.run.app
+**Video:** https://www.youtube.com/watch?v=_DxEdCr8l-8 — 2m28s, 1080p, genuine Playwright captures of the production site with narration. Self-hosted backup: https://scopeai-video-746706977308.us-central1.run.app
 
 **GitHub:** https://github.com/JigSawPT/scopeai
 
@@ -43,7 +43,7 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 ## Submission Checklist (Devpost)
 
-- [ ] Video uploaded to YouTube (public) — PRIORITY #1, do this NOW
+- [x] Video uploaded to YouTube (public): https://www.youtube.com/watch?v=_DxEdCr8l-8
 - [x] GitHub repo public: https://github.com/JigSawPT/scopeai
 - [x] Written narrative: `xprize_narrative.md` (682 words)
 - [ ] Stripe export CSV from dashboard
