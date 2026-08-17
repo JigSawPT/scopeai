@@ -20,7 +20,7 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 **Technical stack:** Next.js 16 on Google Cloud Run, Gemini 2.5 Flash on Vertex AI with Google Search grounding and structured JSON output (responseSchema), Google Cloud Firestore for persistence, Stripe for payments with signed webhook verification.
 
-**What makes it real:** This is not a demo. It's a live production system processing actual payments. The video shows a genuine Playwright capture of the production site, not simulated footage.
+**What makes it real:** This is a live production system on Google Cloud Run with Stripe Checkout integrated and a verified end-to-end payment cycle (test transaction processed and refunded). The video shows genuine Playwright captures of the production site, not simulated footage. The system is operational and ready for customer orders.
 
 **Category:** Small Business Services
 
@@ -35,7 +35,7 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 **Try it:** https://scopeai-746706977308.us-central1.run.app/demo
 
-**Video:** https://scopeai-video-746706977308.us-central1.run.app (self-hosted MP4 with video player, no login required). Source MP4: `videos/scopeai-xprize-demo/renders/scopeai-xprize-demo_2026-08-17_15-35-00.mp4`.
+**Video:** [YouTube link after upload] — 2m28s, 1080p, genuine Playwright captures of the production site with narration. Self-hosted backup: https://scopeai-video-746706977308.us-central1.run.app
 
 **GitHub:** https://github.com/JigSawPT/scopeai
 
@@ -43,12 +43,14 @@ The entire pipeline runs in under 3 minutes. Every agent action is logged with t
 
 ## Submission Checklist (Devpost)
 
-- [ ] Video uploaded to YouTube/Vimeo (public) and link pasted above
-- [ ] GitHub repo shared: `testing@devpost.com` + `judging@hacker.fund` (invitations sent or repo is public)
-- [ ] Written narrative: `xprize_narrative.md` (already in repo)
-- [ ] Financial evidence: Stripe export + `xprize_pnl_template.csv` (already in repo)
-- [ ] Google Cloud billing PDF: export from Cloud Console → Billing → Documents
-- [ ] Live demo URL: https://scopeai-746706977308.us-central1.run.app/demo
+- [ ] Video uploaded to YouTube (public) — PRIORITY #1, do this NOW
+- [x] GitHub repo public: https://github.com/JigSawPT/scopeai
+- [x] Written narrative: `xprize_narrative.md` (682 words)
+- [ ] Stripe export CSV from dashboard
+- [x] P&L: `xprize_pnl_template.csv` (real expenses, $0 customer revenue)
+- [ ] Google Cloud billing PDF
+- [x] Live demo URL: https://scopeai-746706977308.us-central1.run.app/demo
+- [ ] Customer evidence: not available (submit without)
 
 ## Owner Steps (3 minutes total)
 
