@@ -1,6 +1,6 @@
 # YouTube Upload — Copy-Paste Ready (Owner action, ~3 min)
 
-**File:** `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-17_09-51-28.mp4` (28.3 MB, 2m28s, 1080p Full HD)
+**File:** `videos\scopeai-xprize-demo\renders\scopeai-xprize-demo_2026-08-17_15-35-00.mp4` (32.4 MB, 2m28s, 1080p Full HD)
 
 **Steps:** YouTube Studio → Create → Upload → select file → paste below → Visibility: **Public** → Publish → copy the URL into Devpost.
 
